@@ -1,0 +1,27 @@
+/* Add a selector for the td and th elements using the multiple selector (td, th { }). */
+
+
+/* To this selector, add a border property with a value of 1px solid red;. */
+
+td, th {
+	border: 1px solid red;
+}
+
+/* After adding the border, you will notice that the cells are all separated, which is the initial value for the border-collapse. */
+/* Add the property border-collapse to the table element with a value of collapse. */
+
+table {
+	border-collapse: collapse;
+}
+
+/* The table's width, by default, is the width of the content. Add a width property to the table element with a value of 100%. */
+
+table {
+	width: 100%;
+}
+
+/* Now let’s center the text with the text align property, added to the table element with a value of  text-align: center;. */
+
+table {
+	text-align: center;
+}
