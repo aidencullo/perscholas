@@ -32,16 +32,18 @@ for (let i = 1; i <= 100; i++) {
 // Be careful! If you set n to a number too large, your loop could take a long time to process.
 
 function nextPrime(k) {
-  i = k
-  while (1){
-    i++
-    if (isPrime(i)){
-      return i
+  for (;;){
+    k++;
+    if (isPrime(k)){
+      return k;
     }
   }
 }
 
 function isPrime(k){
+  if (k < 2){
+    return false;
+  }
   for (let i = 2; i < k; i++){
     if (k % i === 0){
       return false;
