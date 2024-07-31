@@ -1,3 +1,9 @@
 [submodule "308.1.1"]
 	path = 308.1.1
 	url = https://github.com/aidencullo/ALAB-308.1.1.git
+[submodule "MyFirstRepo"]
+	path = MyFirstRepo
+	url = https://github.com/aidencullo/MyFirstRepo.git
+[submodule "SBA-307"]
+	path = SBA-307
+	url = https://github.com/aidencullo/SBA-307.git
