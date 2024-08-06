@@ -21,4 +21,22 @@ const result = test_input.map((el) => {
   return obj
 })
 
-console.log(result)
+// console.log(result)
+
+
+// part 4
+
+const sum = result.reduce((accumulator, obj) => {
+  return accumulator + Number(obj.age)
+}, 0);
+
+const avg = sum / result.length
+
+// console.log(avg)
+
+//part 5
+
+const newTwoDArray = result.map((el) => Object.values(el))
+const newStrArray = newTwoDArray.map((el) => el.join(","))
+const newCsv = newStrArray.join("\n")
+console.log(newCsv)
