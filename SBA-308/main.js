@@ -91,6 +91,11 @@ function getLearnerData(course, ag, submissions) {
     learners[submission.learner_id] = {...blankLearner};
   });
   
+  submissions = submissions.filter(submission => {
+    const today = new Date().toISOString().split('T')[0];
+    return assignments[submission.assignment_id].due_at <= today;
+  });
+  
   submissions.forEach(submission => {
     learners[submission.learner_id].points_earned += submission.submission.score;
   });
