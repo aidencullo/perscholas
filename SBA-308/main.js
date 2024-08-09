@@ -77,18 +77,32 @@ const LearnerSubmissions = [
 ];
 
 function getLearnerData(course, ag, submissions) {
+  const blankLearner = {
+    points_possible: 0,
+    points_earned: 0,
+  };
   const assignments = {}
+  ag.assignments.forEach((assignment) => {
+    assignments[assignment.id] = {...assignment}
+  })
 
   const learners = {};
   submissions.forEach(submission => {
-    learners[submission.learner_id] = {
-      points_possible: 0,
-      points_earned: 0,
-    };
+    learners[submission.learner_id] = {...blankLearner};
   });
+  
   submissions.forEach(submission => {
     learners[submission.learner_id].points_earned += submission.submission.score;
   });
+
+  submissions.forEach(submission => {
+    learners[submission.learner_id].points_possible += assignments[submission.assignment_id].points_possible;
+  });
+
+  submissions.forEach(submission => {
+    learners[submission.learner_id][submission.assignment_id] = submission.submission.score / assignments[submission.assignment_id].points_possible;
+  });
+
   return learners;
 }
 
