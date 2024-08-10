@@ -77,38 +77,75 @@ const LearnerSubmissions = [
 ];
 
 function getLearnerData(course, ag, submissions) {
-  const blankLearner = {
-    points_possible: 0,
-    points_earned: 0,
-  };
+  const assignments = buildAssignments(ag);
+  const learners = buildLearners(submissions);
+  const filteredSubmissions = filterSubmissions(submissions, assignments);
+  
+  filteredSubmissions.forEach(submission => {
+    learners[submission.learner_id].points_earned += getFinalSubmissionScore(submission, assignments);
+  });
+
+  filteredSubmissions.forEach(submission => {
+    learners[submission.learner_id].points_possible += assignments[submission.assignment_id].points_possible;
+  });
+
+  filteredSubmissions.forEach(submission => {
+    console.log(getFinalSubmissionScore(submission, assignments))
+    console.log(assignments[submission.assignment_id].points_possible)
+    learners[submission.learner_id][submission.assignment_id] = getFinalSubmissionScore(submission, assignments) / assignments[submission.assignment_id].points_possible;
+  });
+
+  return Object.values(learners).map((learner) => {
+    const newLearner = {...learner};
+    newLearner.id = learner.id;
+    newLearner.avg = learner.points_earned / learner.points_possible;
+    delete newLearner.points_possible;
+    delete newLearner.points_earned;
+    return newLearner;
+  })
+}
+
+function getFinalSubmissionScore(submission, assignments) {
+  if (isLate(submission, assignments[submission.assignment_id])) {
+    return submission.submission.score - (assignments[submission.assignment_id].points_possible * 0.1);
+  }
+  return submission.submission.score;
+}
+
+function isLate(submission, assignment) {
+  console.log(submission.submission.submitted_at, assignment.due_at);
+  return submission.submission.submitted_at > assignment.due_at;
+}
+
+function buildAssignments(ag) {
   const assignments = {}
   ag.assignments.forEach((assignment) => {
     assignments[assignment.id] = {...assignment}
   })
+  return assignments;
+}
 
+function buildLearners(submissions) {
   const learners = {};
   submissions.forEach(submission => {
-    learners[submission.learner_id] = {...blankLearner};
+    if (!learners[submission.learner_id]) {
+      learners[submission.learner_id] = {
+	id: submission.learner_id,
+	points_possible: 0,
+	points_earned: 0
+      };
+    }
   });
-  
-  submissions = submissions.filter(submission => {
-    const today = new Date().toISOString().split('T')[0];
-    return assignments[submission.assignment_id].due_at <= today;
-  });
-  
-  submissions.forEach(submission => {
-    learners[submission.learner_id].points_earned += submission.submission.score;
-  });
-
-  submissions.forEach(submission => {
-    learners[submission.learner_id].points_possible += assignments[submission.assignment_id].points_possible;
-  });
-
-  submissions.forEach(submission => {
-    learners[submission.learner_id][submission.assignment_id] = submission.submission.score / assignments[submission.assignment_id].points_possible;
-  });
-
   return learners;
+}
+
+function filterSubmissions(submissions, assignments) {
+  return submissions.filter(submission => isDue(assignments[submission.assignment_id]));
+}
+
+function isDue(assignment) {
+  const today = new Date().toISOString().split('T')[0];
+  return assignment.due_at <= today;
 }
 
 const expected = [
@@ -128,4 +165,6 @@ const expected = [
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
-console.log(`result: ${JSON.stringify(result, null, 2)}`);
+console.log(result);
+console.log(expected);
+console.log(JSON.stringify(result) === JSON.stringify(expected));
