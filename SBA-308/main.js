@@ -86,13 +86,13 @@ function Wrapper(fn) {
   }
 }
 
-
 function getLearnerData(course, ag, submissions) {
   return Wrapper(getLearnerDataRaw)(course, ag, submissions);
 }
 
 function getLearnerDataRaw(course, ag, submissions) {
   checkAgCourseId(ag, course);
+  checkAssignmentGroupIsValid(ag);
   const assignments = buildAssignments(ag);
   const learners = buildLearners(submissions);
   const filteredSubmissions = filterSubmissions(submissions, assignments);
@@ -122,6 +122,12 @@ function getLearnerDataRaw(course, ag, submissions) {
 function checkAgCourseId(ag, course) {
   if (ag.course_id !== course.id) {
     throw new Error('Course ID does not match');
+  }
+}
+
+function checkAssignmentGroupIsValid(ag) {
+  if (ag.assignments.filter(a => typeof a.points_possible !== 'number' || a.points_possible <= 0).length > 0) {
+    throw new Error('Points possible must be a number greater than 0');
   }
 }
 
