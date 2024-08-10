@@ -15,7 +15,7 @@ const AssignmentGroup = {
       id: 1,
       name: "Declare a Variable",
       due_at: "2023-01-25",
-      points_possible: 50
+      points_possible: 50,
     },
     {
       id: 2,
@@ -126,9 +126,29 @@ function checkAgCourseId(ag, course) {
 }
 
 function checkAssignmentGroupIsValid(ag) {
-  if (ag.assignments.some(a => typeof a.points_possible !== 'number' || a.points_possible <= 0)) {
-    throw new Error('Points possible must be a number greater than 0');
-  }
+  checkPointsPossibleIsNumber(ag);
+  checkPointsPossibleIsNotZero(ag);
+}
+  
+function checkPointsPossibleIsNumber(ag) {
+  ag.assignments.forEach((assignment) => {
+    switch (typeof assignment.points_possible) {
+    case 'number':      
+      break;
+    case 'string':
+    case 'boolean':
+    default:
+      throw new Error('Invalid points_possible');
+    }
+  });
+}
+  
+function checkPointsPossibleIsNotZero(ag) {
+  ag.assignments.forEach((assignment) => {
+    if (assignment.points_possible <= 0) { 
+      throw new Error('points_possible cannot be zero');
+    }
+  });
 }
 
 function getFinalSubmissionScore(submission, assignments) {
