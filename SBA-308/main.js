@@ -126,7 +126,7 @@ function checkAgCourseId(ag, course) {
 }
 
 function checkAssignmentGroupIsValid(ag) {
-  if (ag.assignments.filter(a => typeof a.points_possible !== 'number' || a.points_possible <= 0).length > 0) {
+  if (ag.assignments.some(a => typeof a.points_possible !== 'number' || a.points_possible <= 0)) {
     throw new Error('Points possible must be a number greater than 0');
   }
 }
