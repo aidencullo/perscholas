@@ -1,6 +1,6 @@
 // The provided course information.
 const CourseInfo = {
-  id: 45,
+  id: 451,
   name: "Introduction to JavaScript"
 };
 
@@ -77,9 +77,9 @@ const LearnerSubmissions = [
 ];
 
 function Wrapper(fn) {
-  return (args) => {
+  return (...args) => {
     try {
-      return fn(args);
+      return fn(...args);
     } catch (e) {
       console.log('Error:', e.message);
     }
