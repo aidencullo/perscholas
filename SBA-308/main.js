@@ -77,6 +77,7 @@ const LearnerSubmissions = [
 ];
 
 function getLearnerData(course, ag, submissions) {
+  checkAgCourseId(ag, course);
   const assignments = buildAssignments(ag);
   const learners = buildLearners(submissions);
   const filteredSubmissions = filterSubmissions(submissions, assignments);
@@ -90,8 +91,6 @@ function getLearnerData(course, ag, submissions) {
   });
 
   filteredSubmissions.forEach(submission => {
-    console.log(getFinalSubmissionScore(submission, assignments))
-    console.log(assignments[submission.assignment_id].points_possible)
     learners[submission.learner_id][submission.assignment_id] = getFinalSubmissionScore(submission, assignments) / assignments[submission.assignment_id].points_possible;
   });
 
@@ -105,6 +104,12 @@ function getLearnerData(course, ag, submissions) {
   })
 }
 
+function checkAgCourseId(ag, course) {
+  if (ag.course_id !== course.id) {
+    throw new Error('Course ID does not match');
+  }
+}
+
 function getFinalSubmissionScore(submission, assignments) {
   if (isLate(submission, assignments[submission.assignment_id])) {
     return submission.submission.score - (assignments[submission.assignment_id].points_possible * 0.1);
@@ -113,7 +118,6 @@ function getFinalSubmissionScore(submission, assignments) {
 }
 
 function isLate(submission, assignment) {
-  console.log(submission.submission.submitted_at, assignment.due_at);
   return submission.submission.submitted_at > assignment.due_at;
 }
 
@@ -167,4 +171,3 @@ const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
 console.log(result);
 console.log(expected);
-console.log(JSON.stringify(result) === JSON.stringify(expected));
