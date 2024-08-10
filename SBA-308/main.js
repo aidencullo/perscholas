@@ -1,6 +1,6 @@
 // The provided course information.
 const CourseInfo = {
-  id: 451,
+  id: 45,
   name: "Introduction to JavaScript"
 };
 
@@ -76,7 +76,22 @@ const LearnerSubmissions = [
   }
 ];
 
+function Wrapper(fn) {
+  return (args) => {
+    try {
+      return fn(args);
+    } catch (e) {
+      console.log('Error:', e.message);
+    }
+  }
+}
+
+
 function getLearnerData(course, ag, submissions) {
+  return Wrapper(getLearnerDataRaw)(course, ag, submissions);
+}
+
+function getLearnerDataRaw(course, ag, submissions) {
   checkAgCourseId(ag, course);
   const assignments = buildAssignments(ag);
   const learners = buildLearners(submissions);
@@ -168,6 +183,3 @@ const expected = [
 ];
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
-
-console.log(result);
-console.log(expected);
