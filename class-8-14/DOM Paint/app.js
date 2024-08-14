@@ -94,7 +94,7 @@ c. Then call the createCanvas function you created in Part 1
 
 // CODE HERE
 button.addEventListener('click', () => {
-  canvas.textContent = '';
+  canvas.innerHTML = '';
   createCanvas();
 })
 
