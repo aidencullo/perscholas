@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <style>
+      /* Internal CSS */
+      body {
+	  font-family: Arial, sans-serif;
+	  background-color: #f0f4f8; /* Light complementary color */
+	  margin: 0;
+	  padding: 0;
+      }
+
+      .container {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 100vh;
+	  background: linear-gradient(135deg, #6e45e2, #88d3ce); /* Gradient background */
+      }
+
+      .content {
+	  text-align: center;
+	  background-color: #ffffff; /* White background */
+	  padding: 20px;
+	  border-radius: 10px;
+	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	  animation: fadeIn 2s ease-in;
+	  width: 90%;
+	  max-width: 600px;
+      }
+
+      .content h1 {
+	  color: #333; /* Dark text color */
+	  margin-bottom: 20px;
+      }
+
+      .content img {
+	  width: 100%;
+	  max-width: 500px;
+	  border-radius: 10px;
+	  animation: pulse 2s infinite;
+      }
+
+      @keyframes fadeIn {
+	  from { opacity: 0; }
+	  to { opacity: 1; }
+      }
+
+      @keyframes pulse {
+	  0% { transform: scale(1); }
+	  50% { transform: scale(1.05); }
+	  100% { transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Aiden's Website</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <section class="content">
+        <h2>Introduction</h2>
+        <p>
+	  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl.
+	</p>
+        <h3> image stored locally: </h3>
+        <img src="pexels-hikaique-97906.jpg" style="width: 50%;" alt="A beautiful landscape">
+        <h3> gif stored remotely: </h3>
+	<img src="https://media.giphy.com/media/xT5LMBQarXiHvDcNKE/giphy.gif" alt="The Simpsons GIF">
+        <table>
+          <caption>Sample Table</caption>
+          <thead>
+            <tr>
+              <th>Header 1</th>
+              <th>Header 2</th>
+              <th>Header 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Row 1, Col 1</td>
+              <td>Row 1, Col 2</td>
+              <td>Row 1, Col 3</td>
+            </tr>
+            <tr>
+              <td>Row 2, Col 1</td>
+              <td>Row 2, Col 2</td>
+              <td>Row 2, Col 3</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="about.html">Go to About Page</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 My Website</p>
+    </footer>
+  </body>
+</html>

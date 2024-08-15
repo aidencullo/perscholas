@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="content">
+            <h2>Get in Touch</h2>
+            <p>Feel free to reach out to us using the contact form below.</p>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Contact Form</legend>
+                    <label for="contact-name">Name:</label>
+                    <input type="text" id="contact-name" name="contact-name" required>
+                    <br>
+                    <label for="contact-email">Email:</label>
+                    <input type="email" id="contact-email" name="contact-email" required>
+                    <br>
+                    <label for="contact-subject">Subject:</label>
+                    <select id="contact-subject" name="contact-subject">
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Support</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                    <br>
+                    <label for="contact-message">Message:</label>
+                    <textarea id="contact-message" name="contact-message" rows="4" required></textarea>
+                    <br>
+                    <input type="submit" value="Send">
+                </fieldset>
+            </form>
+            <a href="index.html">Back to Home Page</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+</body>
+</html>

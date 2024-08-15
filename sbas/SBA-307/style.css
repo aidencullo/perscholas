@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f7f6; /* Soft beige background for the whole page */
+}
+
+header {
+    background: #1e3a8a; /* Rich blue */
+    color: #ffffff; /* White text for contrast */
+    padding: 1em 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    background: #1e3a8a; /* Matching the header background */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #facc15; /* Warm yellow on hover */
+}
+
+main {
+    padding: 20px;
+    background: #d0e1f9; /* Soft blue background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #ffffff; /* White background for the table */
+}
+
+table, th, td {
+    border: 1px solid #d0d0d0; /* Light gray border */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f9f7f6; /* Soft beige for headers */
+}
+
+footer {
+    background: #1e3a8a; /* Rich blue, same as header */
+    color: #ffffff; /* White text */
+    text-align: center;
+    padding: 10px 0;
+}
+
+form {
+    margin-top: 20px;
+    background: #ffffff; /* White background for the form */
+    border: 1px solid #d0d0d0; /* Light gray border */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+fieldset {
+    border: none; /* Removed border */
+    padding: 10px;
+    background: #f9f7f6; /* Soft beige background for fieldset */
+    border-radius: 8px;
+}
+
+legend {
+    font-weight: bold;
+    color: #1e3a8a; /* Rich blue */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #d0d0d0; /* Light gray border */
+    border-radius: 4px;
+    background: #ffffff; /* White background for input fields */
+}
+
+input[type="submit"] {
+    width: auto;
+    background: #4f46e5; /* Vibrant blue */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #3b82f6; /* Slightly lighter blue */
+    color: #facc15; /* Warm yellow text on hover */
+}
