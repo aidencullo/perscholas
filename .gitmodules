@@ -7,3 +7,6 @@
 [submodule "SBA-307"]
 	path = SBA-307
 	url = https://github.com/aidencullo/SBA-307.git
+[submodule "ALAB-DOM-Manipulation-Part-Two"]
+	path = ALAB-DOM-Manipulation-Part-Two
+	url = https://github.com/aidencullo/ALAB-DOM-Manipulation-Part-Two.git
