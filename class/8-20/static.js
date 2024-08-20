@@ -64,3 +64,26 @@ class Cow extends Animal {
     return super.toString("Cow");
   }
 }
+
+class Human extends Animal {
+  constructor(name, age, occupation, location) {
+    super(2, 4, true, true);
+    this.name = name;
+    this.age = age;
+    this.occupation = occupation;
+    this.location = location;
+  }
+  speak() {
+    super.speak("Hello.");
+  }
+  toString() {
+    return super.toString("Human");
+  }
+  introduce() {
+    console.log(`Hello, my name is ${this.name.first} ${this.name.last}, and I'm a ${this.age}-year-old ${this.occupation} from ${this.location.city}, ${this.location.state}!`);
+  }
+}
+
+const person = new Human({first: 'John', last: 'Doe'}, 30, 'developer', {city: 'New York', state: 'NY'});
+
+person.introduce();
