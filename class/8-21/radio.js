@@ -5,6 +5,8 @@ function randomInt(min, max){
 class Radio {
   constructor(stations = []){
     this.stations = [...stations];
+    // for deep copy
+    // this.stations = JSON.parse(JSON.stringify(stations));
   }
 
   changeStation(){
