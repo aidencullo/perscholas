@@ -100,41 +100,41 @@
 
 
 
-class Animal {}
-class Cat extends Animal {}
-class Tabby extends Cat {}
-class SpottedTabby extends Tabby {}
+// class Animal {}
+// class Cat extends Animal {}
+// class Tabby extends Cat {}
+// class SpottedTabby extends Tabby {}
 
-const cat1 = new SpottedTabby();
-const cat2 = new SpottedTabby();
-const cat3 = new SpottedTabby();
-const cat4 = new SpottedTabby();
+// const cat1 = new SpottedTabby();
+// const cat2 = new SpottedTabby();
+// const cat3 = new SpottedTabby();
+// const cat4 = new SpottedTabby();
 
-console.log(cat1.breed); // undefined
-console.log(cat2.breed); // undefined
-console.log(cat3.breed); // undefined
-console.log(cat4.breed); // undefined
+// console.log(cat1.breed); // undefined
+// console.log(cat2.breed); // undefined
+// console.log(cat3.breed); // undefined
+// console.log(cat4.breed); // undefined
 
-Object.getPrototypeOf(cat1).breed = "Tabby";
+// Object.getPrototypeOf(cat1).breed = "Tabby";
 
-console.log(cat1.breed); // Tabby
-console.log(cat2.breed); // Tabby
-console.log(cat3.breed); // Tabby
-console.log(cat4.breed); // Tabby
+// console.log(cat1.breed); // Tabby
+// console.log(cat2.breed); // Tabby
+// console.log(cat3.breed); // Tabby
+// console.log(cat4.breed); // Tabby
 
-// New instance has the same prototype.
-const cat5 = new SpottedTabby();
-console.log(cat5.breed); // Tabby
+// // New instance has the same prototype.
+// const cat5 = new SpottedTabby();
+// console.log(cat5.breed); // Tabby
 
-// Setting this directly on this instance.
-cat5.breed = "Tabby"; 
+// // Setting this directly on this instance.
+// cat5.breed = "Tabby"; 
 
-delete Object.getPrototypeOf(cat1).breed;
+// delete Object.getPrototypeOf(cat1).breed;
 
-console.log(cat1.breed); // undefined
-console.log(cat2.breed); // undefined
-console.log(cat3.breed); // undefined
-console.log(cat4.breed); // undefined
-// We only deleted the prototype's value, 
-// this instance still has its value.
-console.log(cat5.breed); // Tabby
+// console.log(cat1.breed); // undefined
+// console.log(cat2.breed); // undefined
+// console.log(cat3.breed); // undefined
+// console.log(cat4.breed); // undefined
+// // We only deleted the prototype's value, 
+// // this instance still has its value.
+// console.log(cat5.breed); // Tabby
