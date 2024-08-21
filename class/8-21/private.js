@@ -5,13 +5,16 @@ class Learner {
     last: '',
   }
   #age;
-  location;
+  location = 'New York';
 
-  constructor(firstName, lastName, age) {
+  constructor(firstName, lastName, age, location) {
     this.#name.first = firstName;
     this.#name.last = lastName;
     this.#age = age;
-    this.location = 'New York';
+    if (location) {
+      this.location = location;
+    }
+    
   }
 
   toString() {
@@ -20,9 +23,7 @@ class Learner {
   
 }
 
-const learner1 = new Learner('Leeroy', 'Jenkins', 18);
-
-learner1.location = 'California';
-learner1.age = 19;
-
+const learner1 = new Learner('Leeroy', 'Jenkins', 18, 'California');
+const learner2 = new Learner('Leeroy', 'Jenkins', 18);
 console.log(learner1.toString());
+console.log(learner2.toString());
