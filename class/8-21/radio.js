@@ -1,11 +1,15 @@
+function randomInt(min, max){
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 class Radio {
   constructor(stations = []){
     this.stations = stations;
   }
 
   changeStation(){
-    this.station = this.stations[Math.floor(Math.random() * this.stations.length)]
-    const song = this.station.songs[Math.floor(Math.random() * this.station.songs.length)]
+    this.station = this.stations[randomInt(0, this.stations.length - 1)];
+    const song = this.station.songs[randomInt(0, this.station.songs.length - 1)];
     console.log(`Now playing ${song.title} by ${song.artist} on ${this.station.name}`)
   }
 }
@@ -18,7 +22,7 @@ class Station {
 }
 
 class Song {
-  constructor(title, artist){
+  constructor(title = 'Hey Jude', artist = 'The Beatles'){
     this.title = title;
     this.artist = artist;
   }
@@ -26,16 +30,13 @@ class Song {
 
 const radio = new Radio([
   new Station('Pop', [
-    new Song('Shape of You', 'Ed Sheeran'),
-    new Song('Despacito', 'Luis Fonsi')
+    new Song(),
   ]),
   new Station('Rock', [
-    new Song('Bohemian Rhapsody', 'Queen'),
-    new Song('Stairway to Heaven', 'Led Zeppelin')
+    new Song(),
   ]),
   new Station('Jazz', [
-    new Song('Take Five', 'Dave Brubeck'),
-    new Song('So What', 'Miles Davis')
+    new Song(),
   ])
 ]);
 
