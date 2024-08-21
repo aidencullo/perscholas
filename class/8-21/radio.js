@@ -4,7 +4,7 @@ function randomInt(min, max){
 
 class Radio {
   constructor(stations = []){
-    this.stations = stations;
+    this.stations = [...stations];
   }
 
   changeStation(){
@@ -17,7 +17,7 @@ class Radio {
 class Station {
   constructor(name, songs = []){
     this.name = name;
-    this.songs = songs;
+    this.songs = [...songs];
   }
 }
 
@@ -26,20 +26,4 @@ class Song {
     this.title = title;
     this.artist = artist;
   }
-}
-
-const radio = new Radio([
-  new Station('Pop', [
-    new Song(),
-  ]),
-  new Station('Rock', [
-    new Song(),
-  ]),
-  new Station('Jazz', [
-    new Song(),
-  ])
-]);
-
-for (let i = 0; i < 5; i++){
-  radio.changeStation();
 }
