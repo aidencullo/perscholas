@@ -80,23 +80,61 @@
 
 
 
+// class Animal {}
+// class Cat extends Animal {}
+// class Tabby extends Cat {}
+// class SpottedTabby extends Tabby {}
+
+// const cat1 = new SpottedTabby();
+// let object = cat1;
+
+// do {
+//   object = Object.getPrototypeOf(object);
+//   console.log(object);
+// } while (object);
+
+
+
+
+
+
+
+
 class Animal {}
 class Cat extends Animal {}
 class Tabby extends Cat {}
 class SpottedTabby extends Tabby {}
 
 const cat1 = new SpottedTabby();
-let object = cat1;
+const cat2 = new SpottedTabby();
+const cat3 = new SpottedTabby();
+const cat4 = new SpottedTabby();
 
-do {
-  object = Object.getPrototypeOf(object);
-  console.log(object);
-} while (object);
+console.log(cat1.breed); // undefined
+console.log(cat2.breed); // undefined
+console.log(cat3.breed); // undefined
+console.log(cat4.breed); // undefined
 
+Object.getPrototypeOf(cat1).breed = "Tabby";
 
+console.log(cat1.breed); // Tabby
+console.log(cat2.breed); // Tabby
+console.log(cat3.breed); // Tabby
+console.log(cat4.breed); // Tabby
 
+// New instance has the same prototype.
+const cat5 = new SpottedTabby();
+console.log(cat5.breed); // Tabby
 
+// Setting this directly on this instance.
+cat5.breed = "Tabby"; 
 
+delete Object.getPrototypeOf(cat1).breed;
 
-
-
+console.log(cat1.breed); // undefined
+console.log(cat2.breed); // undefined
+console.log(cat3.breed); // undefined
+console.log(cat4.breed); // undefined
+// We only deleted the prototype's value, 
+// this instance still has its value.
+console.log(cat5.breed); // Tabby
