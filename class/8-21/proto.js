@@ -24,3 +24,16 @@ Object.assign(Person.prototype, commPrototype);
 
 const person = new Person("Leo");
 person.introduce(); // Hey there, I have a name now! I'm Leo!
+
+
+Array.prototype.min = function () {
+  return Math.min(...this);
+};
+Array.prototype.max = function () {
+  return Math.max(...this);
+};
+
+const arr = [3, 8, 1, -10, 90, 77, 42];
+console.log(arr.min()); // -10
+const otherArr = [3, 8, 1, 90, 77, 42];
+console.log(otherArr.max()); // 90
