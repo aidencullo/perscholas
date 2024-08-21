@@ -37,3 +37,23 @@ class Learner {
     return arr.reduce((a, b) => a + b) / arr.length;
   }
 }
+
+// Instantiate a new Learner.
+const learner = new Learner('aiden', 'cullo', 26);
+
+// Log the learner's name and age.
+console.log(learner.age);
+console.log(learner.name);
+// Add the following grades using addGrades():
+
+learner.addGrades([95, 87, 66], "98", "100", -60, 88, 89, [100, 76, 88], 105);
+
+// [95, 87, 66], "98", "100", -60, 88, 89, [100, 76, 88], 105
+// Log the current grades array and make sure it's what you expect.
+console.log(learner.grades);
+
+// Remember that values less than 0 or greater than 100 should not be included.
+// Calculate the average of these grades manually, keeping in mind that the lowest grade should be excluded from the calculation.
+
+// Log the average returned from .average and compare the results with your calculations to ensure it is working properly.
+console.log(learner.average);
