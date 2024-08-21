@@ -1,1 +1,7 @@
 const radio = {};
+
+radio.stations = [
+  {},
+  {},
+]
+
