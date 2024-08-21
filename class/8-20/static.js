@@ -28,8 +28,8 @@ class Animal {
 
 class Cat extends Animal {
   constructor(fur, isAwake, isMoving) {
-    super(2, 4, isAwake, isMoving);
     this.fur = fur;
+    super(2, 4, isAwake, isMoving);
   }
   speak() {
     super.speak("Meow...");
