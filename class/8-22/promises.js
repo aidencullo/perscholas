@@ -20,4 +20,5 @@ myPromise
   .catch((err) => {
     console.error(err);
   })
-  .then(console.log);
+  .then(console.log)
+  .finally(() => console.log("All done!"));
