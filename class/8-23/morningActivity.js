@@ -9,9 +9,9 @@
 
 
 // REQUESTS WE CAN MAKE (how we interact with this data):
-const personal = new Promise((resolve, reject) => setTimeout(() => resolve({ name: 'Bob', lastName: 'Thompson'}), 300))
-const business = new Promise((resolve, reject) => setTimeout(() => resolve({ occupation: 'Farmer', salary: 300 }), 1000))
-const residence = new Promise((resolve, reject) => setTimeout(() => resolve({ country: 'USA', state: 'Florida' }), 1000))
+const personal = new Promise((resolve, reject) => setTimeout(() => reject({ name: 'Bob', lastName: 'Thompson'}), 300))
+const business = new Promise((resolve, reject) => setTimeout(() => reject({ occupation: 'Farmer', salary: 300 }), 1000))
+const residence = new Promise((resolve, reject) => setTimeout(() => reject({ country: 'USA', state: 'Florida' }), 1000))
 
 
 // WHAT WE WANT:
@@ -29,9 +29,7 @@ Promise.all([personal, business, residence])
   .then((values) => {
     console.log(`${values[0].name} is a ${values[1].occupation} from ${values[2].state} ${values[2].country}`)
   })
-  .catch((err) => {
-    console.log(err)
-  })
+  .catch(console.error);
 
 // alt
 
@@ -43,11 +41,11 @@ personal
 	  .then((residenceData) => {
 	    console.log(`${personalData.name} is a ${businessData.occupation} from ${residenceData.state} ${residenceData.country}`)
 	  })
+	  .catch(console.error)
       })
+      .catch(console.error)
   })
-  .catch((err) => {
-    console.log(err)
-  })
+  .catch(console.error)
 
 async function getBob() {
   try {
