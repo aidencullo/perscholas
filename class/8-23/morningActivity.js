@@ -16,6 +16,15 @@ const residence = new Promise((resolve, reject) => setTimeout(() => resolve({ co
 
 // WHAT WE WANT:
 // print: [firstName] is a [occupation] from [state] [country]
+
+// OBJECTIVE:
+// Extract the data about bob that is currently wrapped in promises
+// and piece together the string we want (above). Don't alter any of
+// the code above and don't recreate the data yourself.
+
+// CODE BELOW:
+
+
 Promise.all([personal, business, residence])
   .then((values) => {
     console.log(`${values[0].name} is a ${values[1].occupation} from ${values[2].state} ${values[2].country}`)
@@ -40,9 +49,15 @@ personal
     console.log(err)
   })
 
-// OBJECTIVE:
-// Extract the data about bob that is currently wrapped in promises
-// and piece together the string we want (above). Don't alter any of
-// the code above and don't recreate the data yourself.
+async function getBob() {
+  try {
+    const personalData = await personal
+    const businessData = await business
+    const residenceData = await residence
+    console.log(`${personalData.name} is a ${businessData.occupation} from ${residenceData.state} ${residenceData.country}`)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
-// CODE BELOW:
+getBob();
