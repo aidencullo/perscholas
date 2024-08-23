@@ -20,6 +20,25 @@ Promise.all([personal, business, residence])
   .then((values) => {
     console.log(`${values[0].name} is a ${values[1].occupation} from ${values[2].state} ${values[2].country}`)
   })
+  .catch((err) => {
+    console.log(err)
+  })
+
+// alt
+
+personal
+  .then((personalData) => {
+    business
+      .then((businessData) => {
+	residence
+	  .then((residenceData) => {
+	    console.log(`${personalData.name} is a ${businessData.occupation} from ${residenceData.state} ${residenceData.country}`)
+	  })
+      })
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 // OBJECTIVE:
 // Extract the data about bob that is currently wrapped in promises
