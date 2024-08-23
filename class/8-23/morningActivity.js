@@ -9,8 +9,8 @@
 
 
 // REQUESTS WE CAN MAKE (how we interact with this data):
-const personal = new Promise((resolve, reject) => setTimeout(() => reject({ name: 'Bob', lastName: 'Thompson'}), 300))
-const business = new Promise((resolve, reject) => setTimeout(() => reject({ occupation: 'Farmer', salary: 300 }), 1000))
+const personal = new Promise((resolve, reject) => setTimeout(() => resolve({ name: 'Bob', lastName: 'Thompson'}), 300))
+const business = new Promise((resolve, reject) => setTimeout(() => resolve({ occupation: 'Farmer', salary: 300 }), 1000))
 const residence = new Promise((resolve, reject) => setTimeout(() => reject({ country: 'USA', state: 'Florida' }), 1000))
 
 
@@ -35,15 +35,13 @@ Promise.all([personal, business, residence])
 
 personal
   .then((personalData) => {
-    business
+    return business
       .then((businessData) => {
-	residence
+	return residence
 	  .then((residenceData) => {
 	    console.log(`${personalData.name} is a ${businessData.occupation} from ${residenceData.state} ${residenceData.country}`)
 	  })
-	  .catch(console.error)
       })
-      .catch(console.error)
   })
   .catch(console.error)
 
