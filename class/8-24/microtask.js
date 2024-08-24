@@ -36,9 +36,11 @@
 
 
 const promise = new Promise(resolve => {
-  return 1;
+  return Promise.resolve(2);
 });
 
 promise
   .then(console.log)
   .catch(console.error);
+
+

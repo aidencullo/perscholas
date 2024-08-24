@@ -13,3 +13,18 @@
 [submodule "ALAB-DOM-Manipulation-Part-One"]
 	path = ALAB-DOM-Manipulation-Part-One
 	url = https://github.com/aidencullo/ALAB-DOM-Manipulation-Part-One.git
+[submodule "Regex-Form-Validation"]
+	path = Regex-Form-Validation
+	url = https://github.com/aidencullo/Regex-Form-Validation.git
+[submodule "ALAB-308A.1.1"]
+	path = ALAB-308A.1.1
+	url = https://github.com/aidencullo/ALAB-308A.1.1.git
+[submodule "ALAB-316.4.1"]
+	path = ALAB-316.4.1
+	url = https://github.com/aidencullo/ALAB-316.4.1.git
+[submodule "GLAB-308A.2.1"]
+	path = GLAB-308A.2.1
+	url = https://github.com/aidencullo/GLAB-308A.2.1.git
+[submodule "SBA316"]
+	path = SBA316
+	url = https://github.com/aidencullo/SBA316.git
