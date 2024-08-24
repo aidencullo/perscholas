@@ -7,3 +7,20 @@ console.log(1);
 console.log(1);
 console.log(1);
 console.log(1);
+
+
+
+
+
+
+
+// test your knowledge
+new Promise(resolve => {
+  console.log(1);
+  resolve(2);
+}).then(console.log);
+
+console.log(3);
+
+
+// 1, 3, 2
