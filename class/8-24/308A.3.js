@@ -194,27 +194,46 @@
 
 
 
-const promise1 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 500, 'one');
+// const promise1 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 500, 'one');
+// });
+
+// const promise2 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 100, 'two');
+// });
+
+// Promise.race([promise1, promise2]).then((value) => {
+//   console.log(value);
+//   // Both resolve, but promise2 is faster
+// });
+// // Expected output: "two"
+
+
+
+
+
+// const promise3 = Promise.reject(3);
+// const promise4 = Promise.resolve(4);
+
+// Promise.race([promise3, promise4])
+//   .then(console.log)
+//   .catch(console.error);
+
+
+
+
+
+const myFirstPromise = new Promise((resolve, reject) => {
+  // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
+  // In this example, we use setTimeout(...) to simulate async code.
+  // In reality, you will probably be using something like XHR or an HTML API.
+  setTimeout(() => {
+    resolve("Success!"); // Yay! Everything went well!
+  }, 250);
 });
 
-const promise2 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 100, 'two');
+myFirstPromise.then((successMessage) => {
+  // successMessage is whatever we passed in the resolve(...) function above.
+  // It doesn't have to be a string, but if it is only a succeed message, it probably will be.
+  console.log(`Yay! ${successMessage}`);
 });
-
-Promise.race([promise1, promise2]).then((value) => {
-  console.log(value);
-  // Both resolve, but promise2 is faster
-});
-// Expected output: "two"
-
-
-
-
-
-const promise3 = Promise.reject(3);
-const promise4 = Promise.resolve(4);
-
-Promise.race([promise3, promise4])
-  .then(console.log)
-  .catch(console.error);
