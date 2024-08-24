@@ -95,7 +95,6 @@
 
 
 function doSomething() {
-  // throw new Error('Fail');
   return Promise.resolve('First thing');
 }
 
@@ -105,11 +104,11 @@ function doSomethingElse(result) {
 }
 
 function doThirdThing(result) {
-  // throw new Error('Fail');
   return Promise.resolve(result + ' Third thing');
 }
 
 function failureCallback(error) {
+  throw new Error('Oh no!');
   console.error('Error:', error);
 }
 
@@ -117,4 +116,5 @@ doSomething()
   .then((result) => doSomethingElse(result))
   .then((newResult) => doThirdThing(newResult))
   .then((finalResult) => console.log(`Got the final result: ${finalResult}`))
-  .catch(failureCallback);
+  .catch(failureCallback)
+  .catch((e) => console.error(`Critical failure: ${e.message}`));
