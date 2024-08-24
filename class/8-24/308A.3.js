@@ -264,16 +264,38 @@
 
 
 
-function failureCallback(error) {
-  console.error('Error:', error);
-}
+// function failureCallback(error) {
+//   console.error('Error:', error);
+// }
 
-function saySomething(something) {
-  throw new Error('I am an error');
-}
+// function saySomething(something) {
+//   throw new Error('I am an error');
+// }
 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+// const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// wait(1000)
+//   .then(() => saySomething("10 seconds"))
+//   .catch(failureCallback);
+
+
+
+
+const wait = (ms) => new Promise((resolve, reject) => {
+  try {
+    //feign an error here
+    throw new Error('I am an error');
+    setTimeout(resolve, ms);
+  } catch (e) {
+    reject(e);
+  }
+});
 
 wait(1000)
   .then(() => saySomething("10 seconds"))
   .catch(failureCallback);
+
+
+function failureCallback(error) {
+  console.error('Error:', error);
+}
