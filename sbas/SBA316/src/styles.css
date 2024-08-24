@@ -1,0 +1,106 @@
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Calibri, sans-serif;
+}
+
+body {
+  background: url('https://images.pexels.com/photos/3483098/pexels-photo-3483098.jpeg') no-repeat center center fixed;
+
+  background-size: cover;
+  color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-container h1 {
+  color: #ff6347; /* Tomato color */
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ff6347;
+  padding-bottom: 10px;
+}
+
+.form-container p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"],
+.form-container input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="email"]:focus,
+.form-container input[type="tel"]:focus,
+.form-container input[type="number"]:focus {
+  border-color: #ff6347;
+  outline: none;
+}
+
+.form-container input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.form-container label {
+  cursor: pointer;
+}
+
+.form-container input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #ff6347; /* Tomato color */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-container input[type="submit"]:hover {
+  background: #e5533c; /* Slightly darker tomato color */
+}
+
+a {
+  color: #ff6347; /* Tomato color */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e5533c; /* Slightly darker tomato color */
+}
+
+#errorDisplay {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fcc;
+  color: red;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+}

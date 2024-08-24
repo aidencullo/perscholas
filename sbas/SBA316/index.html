@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lottery Registration</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h1>Lottery Registration</h1>
+    <p>Please provide your information to enter the lottery.</p>
+
+    <form id="lottery-registration">
+      <input
+        name="fullName"
+        type="text"
+        placeholder="Full Name"
+        required
+      />
+      <br />
+
+      <input
+        name="email"
+        type="email"
+        placeholder="Email"
+        required
+      />
+      <br />
+
+      <input
+        name="phone"
+        type="tel"
+        placeholder="Phone Number"
+        required
+      />
+      <br />
+
+      <input
+        name="age"
+        type="number"
+        placeholder="Age"
+        min="18"
+        required
+      />
+      <br /><br />
+
+      <input
+        name="terms"
+        type="checkbox"
+        required
+      />
+      <label for="terms">I agree to the <a href="#">Terms and Conditions</a>.</label>
+      <br /><br />
+
+      <input type="submit" value="Register" />
+    </form>
+  </div>
+
+  <div id="errorDisplay"></div>
+
+  <div id="jackpot"></div>
+  <div id="winners"></div>
+  <button id="dark-mode">Toggle Dark Mode</button>
+
+  <script type="text/javascript" src="src/index.js"></script>
+</body>
+</html>
