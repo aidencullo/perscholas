@@ -68,24 +68,53 @@
 
 
 
-new Promise((resolve, reject) => {
-  console.log("Initial");
+// new Promise((resolve, reject) => {
+//   console.log("Initial");
 
-  resolve();
-})
-  .then(() => {
-    throw new Error("Something failed");
+//   resolve();
+// })
+//   .then(() => {
+//     throw new Error("Something failed");
 
-    console.log("Do this");
-  })
-  .catch(() => {
-    console.error("Do that");
-  })
-  .then(() => {
-    console.log("Do this, no matter what happened before");
-  });
+//     console.log("Do this");
+//   })
+//   .catch(() => {
+//     console.error("Do that");
+//   })
+//   .then(() => {
+//     console.log("Do this, no matter what happened before");
+//   });
 
 
-// initial
-// do that
-// do this...
+// // initial
+// // do that
+// // do this...
+
+
+
+
+
+function doSomething() {
+  // throw new Error('Fail');
+  return Promise.resolve('First thing');
+}
+
+function doSomethingElse(result) {
+  throw new Error('Fail');
+  return Promise.resolve(result + ' Second thing');
+}
+
+function doThirdThing(result) {
+  // throw new Error('Fail');
+  return Promise.resolve(result + ' Third thing');
+}
+
+function failureCallback(error) {
+  console.error('Error:', error);
+}
+
+doSomething()
+  .then((result) => doSomethingElse(result))
+  .then((newResult) => doThirdThing(newResult))
+  .then((finalResult) => console.log(`Got the final result: ${finalResult}`))
+  .catch(failureCallback);
