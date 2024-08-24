@@ -240,17 +240,40 @@
 
 
 
+
+
+
+
+
+
+// function saySomething(something) {
+//   throw new Error('I am an error');
+// }
+
+// function wrapSaySomething(something) {
+//   return new Promise((resolve, reject) => {
+//     saySomething("10 seconds passed");
+//   })
+//     .then(console.log)
+//   .catch(console.error);
+// }
+
+// setTimeout(() => wrapSaySomething("10 seconds passed"), 1000);
+
+
+
+
+
+function failureCallback(error) {
+  console.error('Error:', error);
+}
+
 function saySomething(something) {
   throw new Error('I am an error');
 }
 
-function wrapSaySomething(something) {
-  return new Promise((resolve, reject) => {
-    saySomething("10 seconds passed");
-  })
-    .then(console.log)
-  .catch(console.error);
-}
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-setTimeout(() => wrapSaySomething("10 seconds passed"), 1000);
-
+wait(1000)
+  .then(() => saySomething("10 seconds"))
+  .catch(failureCallback);
