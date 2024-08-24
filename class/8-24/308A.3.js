@@ -129,55 +129,55 @@
 
 
 
-// function func1() {
-//   return Promise.resolve('First thing');
-// }
+function func1() {
+  return Promise.resolve('First thing');
+}
 
-// function func2() {
-//   return Promise.resolve('Second thing');
-// }
+function func2() {
+  return Promise.resolve('Second thing');
+}
 
-// function func3() {
-//   return Promise.resolve('Third thing');
-// }
+function func3() {
+  return Promise.resolve('Third thing');
+}
 
-// // Promise.all([func1(), func2(), func3()]).then(([result1, result2, result3]) => {
-// //   console.log(result1, result2, result3);
-// // });
-
-
-
-// // [func1, func2, func3]
-// //   .reduce((p, f) => p.then(f), Promise.resolve())
-// //   .then((result3) => {
-// //     console.log(result3);
-// //   });
-
-
-// Promise.resolve()
-//   .then(func1)
-//   .then(func2)
-//   .then(func3)
-//   .then(console.log);
-
-
-// const promise1 = Promise.reject();
-// const promise2 = Promise.reject();
-// const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 0, 'foo'));
-
-// const promises = [promise1, promise2, promise3];
-
-// Promise.any(promises).then((value) => console.log(value));
+Promise.all([func1(), func2(), func3()]).then(([result1, result2, result3]) => {
+  console.log(result1, result2, result3);
+});
 
 
 
+[func1, func2, func3]
+  .reduce((p, f) => p.then(f), Promise.resolve())
+  .then((result3) => {
+    console.log(result3);
+  });
 
-setTimeout(() => console.log('A'), 0);
-setTimeout(() => console.log('B'), 0);
-setTimeout(() => console.log('C'), 0);
-new Promise((resolve, reject) => {
-  setTimeout(() => console.log('D'), 0);
-  resolve();
-})
-  .then(() => console.log('E'))
-  .then(() => console.log('F'));
+
+Promise.resolve()
+  .then(func1)
+  .then(func2)
+  .then(func3)
+  .then(console.log);
+
+
+const promise1 = Promise.reject();
+const promise2 = Promise.reject();
+const promise3 = Promise.resolve();
+
+const promises = [promise1, promise2, promise3];
+
+Promise.any(promises).then(console.log);
+
+
+
+
+// setTimeout(() => console.log('A'), 0);
+// setTimeout(() => console.log('B'), 0);
+// setTimeout(() => console.log('C'), 0);
+// new Promise((resolve, reject) => {
+//   setTimeout(() => console.log('D'), 0);
+//   resolve();
+// })
+//   .then(() => console.log('E'))
+//   .then(() => console.log('F'));
