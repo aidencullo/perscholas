@@ -36,13 +36,15 @@ function doSomethingCritical() {
 }
 
 function doSomethingOptional(data) {
-  return new Promise((resolve, reject) => {
-    throw new Error('Something optional failed');
-  });
+  return Promise.resolve({ optional: 'data' });
 }
 
 function moreCriticalStuff() {
   return Promise.resolve({ more: 'data' });
+}
+
+function doSomethingExtraNice(data) {
+  return Promise.resolve({ extra: 'extra nice data' });
 }
 
 
@@ -50,8 +52,13 @@ doSomethingCritical()
   .then((result) =>
     doSomethingOptional(result)
       .then((optionalResult) => doSomethingExtraNice(optionalResult))
-      .catch((e) => {})
+      .catch((e) => {}),
   ) // Ignore if optional stuff fails; proceed.
   .then(() => moreCriticalStuff())
   .catch((e) => console.error(`Critical failure: ${e.message}`))
   .then(console.log);
+
+
+Promise.resolve('foo')
+  .then(() => Promise.resolve('bar')) // Return a promise
+  .then(console.log); // Outputs: 'bar'
