@@ -129,45 +129,45 @@
 
 
 
-function func1() {
-  return Promise.resolve('First thing');
-}
+// function func1() {
+//   return Promise.resolve('First thing');
+// }
 
-function func2() {
-  return Promise.resolve('Second thing');
-}
+// function func2() {
+//   return Promise.resolve('Second thing');
+// }
 
-function func3() {
-  return Promise.resolve('Third thing');
-}
+// function func3() {
+//   return Promise.resolve('Third thing');
+// }
 
-Promise.all([func1(), func2(), func3()]).then(([result1, result2, result3]) => {
-  console.log(result1, result2, result3);
-});
-
-
-
-[func1, func2, func3]
-  .reduce((p, f) => p.then(f), Promise.resolve())
-  .then((result3) => {
-    console.log(result3);
-  });
+// Promise.all([func1(), func2(), func3()]).then(([result1, result2, result3]) => {
+//   console.log(result1, result2, result3);
+// });
 
 
-Promise.resolve()
-  .then(func1)
-  .then(func2)
-  .then(func3)
-  .then(console.log);
+
+// [func1, func2, func3]
+//   .reduce((p, f) => p.then(f), Promise.resolve())
+//   .then((result3) => {
+//     console.log(result3);
+//   });
 
 
-const promise1 = Promise.reject();
-const promise2 = Promise.reject();
-const promise3 = Promise.resolve();
+// Promise.resolve()
+//   .then(func1)
+//   .then(func2)
+//   .then(func3)
+//   .then(console.log);
 
-const promises = [promise1, promise2, promise3];
 
-Promise.any(promises).then(console.log);
+// const promise1 = Promise.reject();
+// const promise2 = Promise.reject();
+// const promise3 = Promise.resolve();
+
+// const promises = [promise1, promise2, promise3];
+
+// Promise.any(promises).then(console.log);
 
 
 
@@ -181,3 +181,40 @@ Promise.any(promises).then(console.log);
 // })
 //   .then(() => console.log('E'))
 //   .then(() => console.log('F'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 500, 'one');
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'two');
+});
+
+Promise.race([promise1, promise2]).then((value) => {
+  console.log(value);
+  // Both resolve, but promise2 is faster
+});
+// Expected output: "two"
+
+
+
+
+
+const promise3 = Promise.reject(3);
+const promise4 = Promise.resolve(4);
+
+Promise.race([promise3, promise4])
+  .then(console.log)
+  .catch(console.error);
