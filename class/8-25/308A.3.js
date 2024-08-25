@@ -5,12 +5,25 @@
 // console.log(1);
 
 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+// const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-wait(0).then(() => console.log("Cat"));
+// wait(0).then(() => console.log("Cat"));
 
-Promise.resolve()
-  .then(() => console.log("Dog"))
-  .then(() => console.log("Cow"));
+// Promise.resolve()
+//   .then(() => console.log("Dog"))
+//   .then(() => console.log("Cow"));
 
-console.log("Bird");
+// console.log("Bird");
+
+
+
+
+
+const thenable = {
+  then: function(onFulfilled) {
+    setTimeout(() => onFulfilled("Hey"), 100);
+  }
+};
+
+
+thenable.then((message) => console.log(message));
