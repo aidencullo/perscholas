@@ -54,16 +54,11 @@
 // below thenable behaves like a promise that fulfills with
 // the value `42` after 10ms.
 const thenable = {
-  then: function(onFulfilled) {
-    setTimeout(() => onFulfilled(42), 10);
-  }
+  then: function(onFulfilled, onRejected) {
+    onRejected(1)
+  },
 };
 
-Promise.resolve()
-  .then(() => Promise.resolve(thenable))
-  .then(console.log);
-
-async function awaitThenable() {
-  const v = await thenable;
-  console.log(v);
-}
+Promise.resolve(thenable)
+  .then(console.log)
+  .catch(console.error);
