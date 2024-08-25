@@ -19,11 +19,24 @@
 
 
 
+// const thenable = {
+//   then: function(onFulfilled) {
+//     setTimeout(() => onFulfilled("Hey"), 100);
+//   }
+// };
+
+
+// thenable.then((message) => console.log(message));
+
 const thenable = {
-  then: function(onFulfilled) {
-    setTimeout(() => onFulfilled("Hey"), 100);
-  }
+    then: function(onFulfilled) {
+        setTimeout(() => onFulfilled("Hey"), 100);
+    }
 };
 
+const p = Promise.resolve(thenable);
+console.log(p instanceof Promise); // true
 
-thenable.then((message) => console.log(message));
+Promise.resolve()
+    .then(() => thenable)
+    .then(val => console.log(val)); // Hey
