@@ -50,15 +50,49 @@
 //   .catch(console.error)
 
 
-// A thenable is an object with a `then()` function. The
-// below thenable behaves like a promise that fulfills with
-// the value `42` after 10ms.
-const thenable = {
-  then: function(onFulfilled, onRejected) {
-    onRejected(1)
-  },
-};
+// // A thenable is an object with a `then()` function. The
+// // below thenable behaves like a promise that fulfills with
+// // the value `42` after 10ms.
+// const thenable = {
+//   then: function(onFulfilled, onRejected) {
+//     onRejected(1)
+//   },
+// };
 
-Promise.resolve(thenable)
-  .then(console.log)
-  .catch(console.error);
+// Promise.resolve(thenable)
+//   .then(console.log)
+//   .catch(console.error);
+
+
+
+
+
+
+
+
+
+
+
+
+// Code after each await expression can be thought of as existing within a .then() callback function. await allows us to "chain" asynchronous logic without actually chaining it.
+
+
+function resolveAfterSeconds(t) {
+    const myPromise = new Promise(resolve => {
+        setTimeout(() => {
+            resolve('Done!');
+        }, t * 1000);
+    });
+
+    return myPromise;
+}
+
+async function testAwait() {
+    console.log('Testing...');
+
+    const result = await resolveAfterSeconds(2);
+
+    console.log(result);
+}
+
+testAwait();
