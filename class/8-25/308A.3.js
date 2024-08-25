@@ -28,15 +28,23 @@
 
 // thenable.then((message) => console.log(message));
 
-const thenable = {
-    then: function(onFulfilled) {
-        setTimeout(() => onFulfilled("Hey"), 100);
-    }
-};
+// const thenable = {
+//     then: function(onFulfilled) {
+//         setTimeout(() => onFulfilled("Hey"), 100);
+//     }
+// };
 
-const p = Promise.resolve(thenable);
-console.log(p instanceof Promise); // true
+// const p = Promise.resolve(thenable);
+// console.log(p instanceof Promise); // true
 
-Promise.resolve()
-    .then(() => thenable)
-    .then(val => console.log(val)); // Hey
+// Promise.resolve()
+//     .then(() => thenable)
+//     .then(val => console.log(val)); // Hey
+
+
+const p = new Promise(res => setTimeout(res('por fin'), 1000))
+const pp = Promise.resolve(p)
+
+pp
+  .then(console.log)
+  .catch(console.error)
