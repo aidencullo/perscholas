@@ -42,9 +42,28 @@
 //     .then(val => console.log(val)); // Hey
 
 
-const p = new Promise(res => setTimeout(res('por fin'), 1000))
-const pp = Promise.resolve(p)
+// const p = new Promise(res => setTimeout(res('por fin'), 1000))
+// const pp = Promise.resolve(p)
 
-pp
-  .then(console.log)
-  .catch(console.error)
+// pp
+//   .then(console.log)
+//   .catch(console.error)
+
+
+// A thenable is an object with a `then()` function. The
+// below thenable behaves like a promise that fulfills with
+// the value `42` after 10ms.
+const thenable = {
+  then: function(onFulfilled) {
+    setTimeout(() => onFulfilled(42), 10);
+  }
+};
+
+Promise.resolve()
+  .then(() => Promise.resolve(thenable))
+  .then(console.log);
+
+async function awaitThenable() {
+  const v = await thenable;
+  console.log(v);
+}
