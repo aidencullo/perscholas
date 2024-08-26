@@ -28,3 +28,6 @@ expect(typeof new Promise(() => {})).to.equal('object');
 
 expect(null == undefined).to.equal(true);
 expect(null === undefined).to.equal(false);
+
+expect(Boolean(null)).to.equal(false);
+expect(Boolean(undefined)).to.equal(false);
