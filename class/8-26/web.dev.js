@@ -1,3 +1,4 @@
-const assert = require('assert');
+import { expect } from 'chai';
 
-assert.strictEqual(2 + 2, '4', 'Math is broken!');
+expect(2 + 2).to.equal(4);
+expect(2 + 2).to.not.equal(4);
