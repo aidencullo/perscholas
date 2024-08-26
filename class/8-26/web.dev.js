@@ -49,3 +49,15 @@ function isDict(value) {
 
 
 expect(isDict(global)).to.equal(true);
+
+const d = {
+  key: 'value',
+	nested: {
+		key: 'value'
+	}
+};
+
+expect('key' in d).to.equal(true);
+
+expect('undefined' in global).to.equal(true);
+expect('null' in global).to.equal(false);
