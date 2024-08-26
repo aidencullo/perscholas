@@ -1,3 +1,7 @@
+// Although undefined and null have some functional overlap, they have different purposes. In the strictest sense, null represents a value intentionally defined as "blank," and undefined represents a lack of any assigned value.
+
+
+
 import { expect } from 'chai';
 
 expect(typeof null).to.equal('object');
@@ -20,3 +24,7 @@ expect(typeof new Set()).to.equal('object');
 expect(typeof new WeakMap()).to.equal('object');
 expect(typeof new WeakSet()).to.equal('object');
 expect(typeof new Promise(() => {})).to.equal('object');
+
+
+expect(null == undefined).to.equal(true);
+expect(null === undefined).to.equal(false);
