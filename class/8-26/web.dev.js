@@ -31,3 +31,21 @@ expect(null === undefined).to.equal(false);
 
 expect(Boolean(null)).to.equal(false);
 expect(Boolean(undefined)).to.equal(false);
+
+expect(typeof global).to.equal('object');
+
+
+
+function isDict(value) {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+// // Examples
+// console.log(isDict({ key: 'value' })); // true
+// console.log(isDict([1, 2, 3]));        // false
+// console.log(isDict(null));             // false
+// console.log(isDict('string'));         // false
+// console.log(isDict(123));              // false
+
+
+expect(isDict(global)).to.equal(true);
