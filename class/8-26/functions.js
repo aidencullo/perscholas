@@ -56,3 +56,20 @@ const myObject = {
     
 myObject.regularExample()
 myObject.arrowExample()
+
+
+
+function RegularFuncBird(name, color) {
+  this.name = name
+  this.species = color
+  console.log(this)
+}
+
+const ArrowFuncBird = (name, color) => {
+  this.name = name
+  this.color = color
+  console.log(this)
+}
+
+new RegularFuncBird("Parrot", "blue") 
+new ArrowFuncBird("Parrot", "blue")
