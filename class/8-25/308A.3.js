@@ -74,25 +74,56 @@
 
 
 
-// Code after each await expression can be thought of as existing within a .then() callback function. await allows us to "chain" asynchronous logic without actually chaining it.
+// // Code after each await expression can be thought of as existing within a .then() callback function. await allows us to "chain" asynchronous logic without actually chaining it.
 
 
-function resolveAfterSeconds(t) {
-    const myPromise = new Promise(resolve => {
-        setTimeout(() => {
-            resolve('Done!');
-        }, t * 1000);
-    });
+// function resolveAfterSeconds(t) {
+//     const myPromise = new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve('Done!');
+//         }, t * 1000);
+//     });
 
-    return myPromise;
+//     return myPromise;
+// }
+
+// async function testAwait() {
+//     console.log('Testing...');
+
+//     const result = await resolveAfterSeconds(2);
+
+//     console.log(result);
+// }
+
+// testAwait();
+
+
+
+
+
+
+
+
+const doSomething = () => {
+  return Promise.resolve();
 }
 
-async function testAwait() {
-    console.log('Testing...');
-
-    const result = await resolveAfterSeconds(2);
-
-    console.log(result);
+const failureCallback = () => {
+  return Promise.resolve();
 }
 
-testAwait();
+const doSomething = () => {
+  return Promise.resolve();
+}
+
+const doSomething = () => {
+  return Promise.resolve();
+}
+
+doSomething()
+  .then((result) => doSomethingElse(result))
+  .then((newResult) => doThirdThing(newResult))
+  .then((finalResult) => console.log(`Got the final result: ${finalResult}`))
+  .catch(failureCallback);
+
+
