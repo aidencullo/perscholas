@@ -15,3 +15,17 @@
 
 
 
+
+
+regularFunction()
+
+function regularFunction() {
+  console.log("This is a regular function.")
+}
+
+// won't work
+// arrowFunction()
+
+const arrowFunction = () => {
+  console.log("This is an arrow function.")
+}
