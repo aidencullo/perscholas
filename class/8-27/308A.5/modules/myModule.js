@@ -1,1 +1,3 @@
-export let name1, name2/*, … */; // also var
+const x = 1;
+export default x;
+export const namedExport = 2;

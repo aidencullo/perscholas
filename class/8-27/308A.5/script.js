@@ -1,10 +1,4 @@
-import {
-  name1,
-  name2,
-} from './modules/magicModule.js'
+import defaultExport, { namedExport } from './modules/myModule.js';
 
-// raise TypeError: Assignment to constant variable.
-name1 = 'new name';
-
-
-console.log(name1);
+console.log(defaultExport);
+console.log(namedExport);
