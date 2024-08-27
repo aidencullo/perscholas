@@ -1,3 +1,3 @@
-import magic from './modules/magicModule.js'
+import * as magic from './modules/magicModule.js'
 
-magic();
+magic.getValue();

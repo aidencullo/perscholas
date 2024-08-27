@@ -1,1 +1,3 @@
-export default getValue = console.log;
+export function getValue() {
+  console.log('getValue');
+}
