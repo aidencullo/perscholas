@@ -1,19 +1,30 @@
-const request = new XMLHttpRequest();
+// let request;
 
-request.open("GET", "https://www.example.com", true);
-request.send();
+// document
+//     .getElementById("myBtn")
+//     .addEventListener("click", testRequest);
 
-request.setRequestHeader(
-    "Content-Type",
-    "my-MIME-type-here"
-);
+// function testRequest() {
+//     request = new XMLHttpRequest();
 
-function handleResponse() {
-    if (request.readyState === XMLHttpRequest.DONE) {
-        // request is complete; do tasks.
-    } else {
-        // request is not complete.
-    }
-}
+//     if (!request) {
+//         alert("Failed to create an XMLHttpRequest Object.");
+//         return false;
+//     }
 
-request.onreadystatechange = handleResponse;
+//     request.onreadystatechange = alertResponse;
+//     request.open("GET", "test.html");
+//     request.send();
+// }
+
+//  function alertResponse() {
+//     if (request.readyState === XMLHttpRequest.DONE) {
+//         if (request.status === 200) {
+//             alert(request.responseText);
+//         } else {
+//             alert("The request returned a status other than 200 OK: " + request.status);
+//         }
+//     }
+//  }
+
+alert("Hello, World!");

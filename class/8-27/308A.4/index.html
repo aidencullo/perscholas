@@ -1,34 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Load Local HTML</title>
-  <script>
-
-    const request = new XMLHttpRequest();
-    function alertResponse() {
-      if (request.readyState === 4 && request.status === 200) {
-        // The request is complete and was successful
-        alert(request.responseText); // Show the content of test.html in an alert
-      } else if (request.readyState === 4) {
-        // The request is complete but failed
-        alert("Error: " + request.statusText);
-      }
-    }
-
-    function loadHtml() {
-      request.onreadystatechange = alertResponse;
-      request.open("GET", "./test.html", true);
-      request.send();
-    }
-
-    // Load HTML content when the page loads
-    window.onload = loadHtml;
-  </script>
-</head>
-<body>
-  <h1>XMLHttpRequest Example</h1>
-  <p>Check the alert to see the content of test.html.</p>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Local HTML</title>
+    <script src="src/index.js">    
+    </script>
+  </head>
+  <body>
+    <h1>XMLHttpRequest Example</h1>
+    <p>Don't Check the alert to see the content of test.html.</p>
+  </body>
 </html>
