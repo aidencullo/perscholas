@@ -1,5 +1,1 @@
-const getValue = console.log;
-
-export {
-  getValue,
-};
+export default getValue = console.log;
