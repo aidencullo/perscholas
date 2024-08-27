@@ -1,2 +1,7 @@
-export const getValue = console.log
-export const makeCake = console.log
+const getValue = console.log;
+const makeCake = console.error;
+
+export {
+  getValue,
+  makeCake
+};
