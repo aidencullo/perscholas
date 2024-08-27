@@ -1,3 +1,4 @@
 import magic from './modules/magicModule.js'
 
-magic();
+const m = new magic();
+console.log(m);

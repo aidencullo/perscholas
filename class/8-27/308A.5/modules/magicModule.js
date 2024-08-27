@@ -1,3 +1,2 @@
-export default function() {
-  console.log('magic loading...');
-}
+export default class ClassName { /* … */ }
+
