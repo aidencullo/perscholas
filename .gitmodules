@@ -28,3 +28,6 @@
 [submodule "SBA316"]
 	path = SBA316
 	url = https://github.com/aidencullo/SBA316.git
+[submodule "labs/ALAB-308A.3.1"]
+	path = labs/ALAB-308A.3.1
+	url = https://github.com/aidencullo/ALAB-308A.3.1.git
