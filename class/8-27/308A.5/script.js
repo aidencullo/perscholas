@@ -1,3 +1,3 @@
-import { getValue as gVal, makeCake } from './modules/myModule.js';
+import * as MyModule from './modules/myModule.js';
 
-gVal(10);
+MyModule.getValue(1); // 1
