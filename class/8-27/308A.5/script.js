@@ -1,3 +1,7 @@
-import * as magic from './modules/magicModule.js'
+import {
+  name1,
+  name2,
+} from './modules/magicModule.js'
 
-magic.getValue();
+
+console.log(name1);

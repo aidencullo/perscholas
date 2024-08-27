@@ -1,3 +1,1 @@
-export function getValue() {
-  console.log('getValue');
-}
+export const name1 = 1, name2 = 2/*, … */; // also var, let
