@@ -1,3 +1,5 @@
-import { name, getValue} from './auxiliary.js';
+// import { name, getValue} from './auxiliary.js';
 
-alert(name);
+// alert(name);
+
+document.getElementById('app').innerHTML = 'it works';
