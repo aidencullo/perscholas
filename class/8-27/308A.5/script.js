@@ -1,5 +1,4 @@
-// import { name, getValue} from './auxiliary.js';
+import { getValue as gVal, makeCake } from './modules/myModule.js';
 
-// alert(name);
-
-document.getElementById('app').innerHTML = 'it works';
+const a = 10;
+const x = gVal(a);
