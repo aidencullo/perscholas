@@ -1,17 +1,28 @@
-const request = new XMLHttpRequest();
+let request;
 
-const url = "https://jsonplaceholder.typicode.com/posts";
-request.open("GET", url, true);
-request.send();
+document
+    .getElementById("myBtn")
+    .addEventListener("click", testRequest);
 
-function alertResponse() {
-  if (request.readyState === XMLHttpRequest.DONE) {
-    if (request.status === 200) {
-      alert(request.responseText);
-    } else {
-      alert("The request returned a status other than 200 OK: " + request.status);
+function testRequest() {
+    request = new XMLHttpRequest();
+
+    if (!request) {
+        alert("Failed to create an XMLHttpRequest Object.");
+        return false;
     }
-  }
+
+    request.onreadystatechange = alertResponse;
+    request.open("GET", "test.html");
+    request.send();
 }
 
-request.onreadystatechange = alertResponse;
+ function alertResponse() {
+    if (request.readyState === XMLHttpRequest.DONE) {
+        if (request.status === 200) {
+            alert(request.responseText);
+        } else {
+            alert("The request returned a status other than 200 OK: " + request.status);
+        }
+    }
+}
