@@ -2,18 +2,16 @@ const request = new XMLHttpRequest();
 
 const url = "https://jsonplaceholder.typicode.com/posts";
 request.open("GET", url, true);
-request.setRequestHeader(
-  "Content-Type",
-  "application/x-www-form-urlencoded; charset=UTF-8"
-);
 request.send();
 
-function handleResponse() {
+function alertResponse() {
   if (request.readyState === XMLHttpRequest.DONE) {
-    const response = JSON.parse(request.responseText);
-  } else {
-    console.log("Error");
+    if (request.status === 200) {
+      alert(request.responseText);
+    } else {
+      alert("The request returned a status other than 200 OK: " + request.status);
+    }
   }
 }
 
-request.onreadystatechange = handleResponse;
+request.onreadystatechange = alertResponse;
