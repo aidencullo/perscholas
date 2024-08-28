@@ -13,16 +13,20 @@
 
 
 const person = document.getElementById('person');
-person.addEventListener("click", getNewPerson);
+const next = document.getElementById('next');
+const name = document.getElementById('name');
+const email = document.getElementById('email');
+const age = document.getElementById('age');
+next.addEventListener("click", getNewPerson);
 
 async function getNewPerson() {
   person.style.cursor = 'wait';
   const response = await fetch("https://randomuser.me/api/");
   const jsonData = await response.json();
-  const url = jsonData.results[0].picture.large;
-
-  person.src = url;
-  person.style.cursor = 'pointer';
+  person.src = jsonData.results[0].picture.large;
+  name.textContent = jsonData.results[0].name.first + " " + jsonData.results[0].name.last;
+  email.textContent = jsonData.results[0].email;
+  age.textContent = jsonData.results[0].dob.age;
 }
 
 getNewPerson();
