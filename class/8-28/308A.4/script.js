@@ -13,23 +13,18 @@ function testRequest() {
   }
 
   request.onreadystatechange = alertResponse;
-
-  request.open("POST", "https://jsonplaceholder.typicode.com/todos");
-
-  request.setRequestHeader(
-    "Content-Type",
-    "application/x-www-form-urlencoded"
-  );
-
-  let inputVal = document.getElementById("myInput").value;
-  let encodedVal = encodeURIComponent(inputVal);
-  request.send(`data=${encodedVal}`);
+  request.open("GET", "test.xml");    // Change this to point to our new XML document.
+  request.send();
 }
 
 function alertResponse() {
   if (request.readyState === XMLHttpRequest.DONE) {
-    if (request.status === 200 || request.status === 201) {
-      alert(request.responseText);
+    if (request.status === 200) {
+      const xmlDoc = request.responseXML;
+      const doc_root = xmlDoc.querySelector("root");
+      let data = doc_root.firstChild.data;
+
+      alert(data);
     } else {
       alert("The request returned a status other than 200 OK: " + request.status);
     }
