@@ -1,3 +1,16 @@
+axios.interceptors.response.use(
+  (response) => {
+    // Success: status 200 - 299
+    console.log('Successful response!');
+    return response;
+  },
+  (error) => {
+    // Failure: anything outside of status 2XX
+    console.log('Unsuccessful response...');
+    throw error;
+  }
+);
+
 axios.interceptors.request.use(request => {
   console.log('Request sent.');
   return request;
