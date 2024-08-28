@@ -1,3 +1,8 @@
+axios.interceptors.request.use(request => {
+  console.log('Request sent.');
+  return request;
+});
+
 document
   .getElementById("myBtn")
   .addEventListener("click", testRequest);
@@ -5,7 +10,7 @@ document
 async function testRequest() {
   let inputVal = document.getElementById("myInput").value;
   let requestBody = { data: inputVal };
-
+  
   const response = await axios.post('https://jsonplaceholder.typicode.com/todos', 
 				    requestBody, { 
 				      headers: { 
@@ -19,3 +24,4 @@ async function testRequest() {
 async function logResponse(response) {
   console.log(response.data);
 }
+
