@@ -20,8 +20,8 @@ const age = document.getElementById('age');
 next.addEventListener("click", getNewPerson);
 
 async function getNewPerson() {
-  person.style.cursor = 'wait';
-  const response = await fetch("https://randomuser.me/api/");
+  const url = 'https://randomuser.me/api/?gender=female&nat=us';
+  const response = await fetch(url);
   const jsonData = await response.json();
   person.src = jsonData.results[0].picture.large;
   name.textContent = jsonData.results[0].name.first + " " + jsonData.results[0].name.last;
