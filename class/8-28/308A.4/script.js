@@ -1,3 +1,8 @@
+const requestInterceptor = axios.interceptors.request.use(request => {
+  console.log('Request sent.');
+  return request;
+});
+
 axios.interceptors.response.use(
   (response) => {
     // Success: status 200 - 299
@@ -10,11 +15,6 @@ axios.interceptors.response.use(
     throw error;
   }
 );
-
-axios.interceptors.request.use(request => {
-  console.log('Request sent.');
-  return request;
-});
 
 document
   .getElementById("myBtn")
@@ -30,6 +30,8 @@ async function testRequest() {
 					'Content-Type': 'application/json; charset=UTF-8' 
 				      }
 				    });
+
+  axios.interceptors.request.eject(requestInterceptor);
 
   logResponse(response);
 }
