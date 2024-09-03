@@ -94,6 +94,7 @@ const factorial = (n) => {
  * This prevents the function from being added 
  * directly to the call stack.
  */
+
 const facto = (n, a = 1) => {
   if (n === 0) return a;
   return () => facto(n - 1, n * a);
@@ -135,14 +136,21 @@ const trampoline = (f, ...args) => {
 const flatten = (arr) => arr.reduce((acc, el) => 
   acc.concat(Array.isArray(el) ? flatten(el) : el), []);
 
-let infiniteArray = [];
+let infiniteArray = [1];
 for (let i = 0; i < 10000; i++) {
   infiniteArray = [infiniteArray];
 }
 
+const flatto = (arr) => {
+  if (Array.isArray(arr)) {
+    [arr] = arr
+    return () => flatto(arr)
+  }
+  return arr
+}
+
+
 // RangeError: Maximum call stack size exceeded
 // console.log(flatten(infiniteArray));
 
-console.log('trampoline');
 console.log(trampoline(flatto(infiniteArray)));
-console.log('finished');
