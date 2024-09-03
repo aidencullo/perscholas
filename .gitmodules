@@ -46,3 +46,12 @@
 [submodule "class/9-3/Express-Creating-Template-Engines"]
 	path = class/9-3/Express-Creating-Template-Engines
 	url = https://github.com/aidencullo/Express-Creating-Template-Engines.git
+[submodule "labs/ALAB-318.2.1"]
+	path = labs/ALAB-318.2.1
+	url = https://github.com/aidencullo/ALAB-318.2.1.git
+[submodule "sbas/SBA-308A"]
+	path = sbas/SBA-308A
+	url = https://github.com/aidencullo/SBA-308A.git
+[submodule "labs/GLAB-318.1.1"]
+	path = labs/GLAB-318.1.1
+	url = https://github.com/aidencullo/GLAB-318.1.1.git
