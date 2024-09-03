@@ -31,3 +31,6 @@
 [submodule "labs/ALAB-308A.3.1"]
 	path = labs/ALAB-308A.3.1
 	url = https://github.com/aidencullo/ALAB-308A.3.1.git
+[submodule "class/9-3/Express-Basics"]
+	path = class/9-3/Express-Basics
+	url = https://github.com/aidencullo/Express-Basics.git
