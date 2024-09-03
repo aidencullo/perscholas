@@ -34,3 +34,15 @@
 [submodule "class/9-3/Express-Basics"]
 	path = class/9-3/Express-Basics
 	url = https://github.com/aidencullo/Express-Basics.git
+[submodule "class/9-3/Express-Route-Parameters"]
+	path = class/9-3/Express-Route-Parameters
+	url = https://github.com/aidencullo/Express-Route-Parameters.git
+[submodule "class/9-3/Express-Middleware"]
+	path = class/9-3/Express-Middleware
+	url = https://github.com/aidencullo/Express-Middleware.git
+[submodule "class/9-3/Express-Router-Organization"]
+	path = class/9-3/Express-Router-Organization
+	url = https://github.com/aidencullo/Express-Router-Organization.git
+[submodule "class/9-3/Express-Creating-Template-Engines"]
+	path = class/9-3/Express-Creating-Template-Engines
+	url = https://github.com/aidencullo/Express-Creating-Template-Engines.git
