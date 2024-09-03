@@ -88,7 +88,11 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
+const getCats = (code) => {
+  return `https://http.cat/${code}`;
+};
+
 app.get('/', (req, res) => {
   const { code, description } = getRandomStatus();
-  res.sendStatus(code);
+  res.redirect(getCats(code));
 });
