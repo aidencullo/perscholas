@@ -7,5 +7,5 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-  res.sendStatus(418);
+  res.sendFile(__dirname + '/image.png');
 });
