@@ -1,19 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/:total/:tipPercentage', function(req, res, next) {
-  if (isNaN(req.params.total) || isNaN(req.params.tipPercentage)) {
-    res.send('Please provide valid numbers');
-    return;
-  }
-  const total = req.params.total;
-  const tipPercentage = req.params.tipPercentage;
-  const tip = total * tipPercentage / 100;
+router.get(/^\/(\d+)\/(\d+)$/, function(req, res) {
+  const tip = req.params[0] * req.params[1] / 100;
   res.send('The tip is ' + tip);
 });
 
-router.get('/', function(req, res, next) {
-  res.send('please provide total and tipPercentage');
+router.get('*', function(req, res) {
+  res.send('please provide valid numbers');
 });
 
 module.exports = router;
