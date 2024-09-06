@@ -75,7 +75,21 @@ db.listingsAndReviews.find(
 
 Querying Nested Data:
 	Find all listings where the host's host_location is "Rio de Janeiro, State of Rio de Janeiro, Brazil".
+
+db.listingsAndReviews.find({
+	"host.host_location": "Rio de Janeiro, State of Rio de Janeiro, Brazil"
+})
+
+
 	Retrieve all listings where the amenities array includes "Wifi" and "Kitchen".
+
+db.listingsAndReviews.find({
+$or: [
+	{ amenities: "Wifi" },
+	{ amenities: "Kitchen" },
+]
+})
+
 
 Updating Nested Data:
 	Update the interaction field of the listing with _id "1001265" to change the text to "We strive to provide 	responsive management and assistance throughout your stay.".
