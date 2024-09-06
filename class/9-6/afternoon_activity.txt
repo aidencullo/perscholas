@@ -42,6 +42,14 @@ db.listingsAndReviews.updateOne(
 
 Deleting Data:
 	Remove the listing with _id "1001265" from the database.
+db.listingsAndReviews.deleteOne(
+  { _id: "1001265" },
+);
+or
+db.listingsAndReviews.deleteMany(
+  { _id: "1001265" },
+);
+
 
 Finding Specific Information:
 	Find the host name, host location, and host about information for the listing with _id "10009999".
