@@ -11,9 +11,34 @@ db.listingsAndReviews.find({accommodates: {$gte: 4}}).limit(1)
 	
 Updating Data:
 	Update the house_rules of the listing with _id "10009999" to add a new rule: "No pets allowed".
+db.listingsAndReviews.updateOne(
+  { _id: "10009999" },  // Filter: Find the document with _id "10009999"
+  [
+    { $set: { 
+        house_rules: { 
+          $concat: [
+            "$house_rules",  // Existing house_rules value
+            " No pets allowed."  // New rule to append
+          ]
+        }
+      } 
+    }
+  ]
+);
+or
+db.listingsAndReviews.updateOne(
+  { _id: "10009999" },  // Filter: Find the document with _id "10009999"
+  { $set: { house_rules: "I just hope the guests treat the space as their own, with respect to it as well as to my neighbours! Espero apenas que os hóspedes tratem o lugar com carinho e respeito aos vizinhos! No pets allowed." } }  // Update: Append "No pets allowed" to the existing house_rules string
+);
+
 
 
 	Increase the cleaning_fee of the listing with _id "1001265" by $20.
+db.listingsAndReviews.updateOne(
+  { _id: "10009999" },
+  { $inc: {cleaning_fee: 20} }
+);
+
 
 Deleting Data:
 	Remove the listing with _id "1001265" from the database.
