@@ -92,7 +92,15 @@ $or: [
 
 
 Updating Nested Data:
-	Update the interaction field of the listing with _id "1001265" to change the text to "We strive to provide 	responsive management and assistance throughout your stay.".
+	Update the interaction field of the listing with _id "1001265" to change the text to "We strive to provide responsive management and assistance throughout your stay.".
+
+db.listingsAndReviews.findOneAndUpdate(
+  { _id: "1001265" },  
+    { $set: { interaction: "We strive to provide responsive management and assistance throughout your stay." } }
+)
+
+
+
 
 Deleting Nested Data:
 	Remove the neighborhood_overview field from the listing with _id "10009999".
