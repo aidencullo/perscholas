@@ -216,26 +216,27 @@ db.listingsAndReviews.countDocuments({
   beds: { $gt: 1 }
 })
 
-// // Increment or Decrement:
-// // 	Increment the number_of_reviews field by 1 for the listing with _id "10009999".
+// Increment or Decrement:
+// 	Increment the number_of_reviews field by 1 for the listing with _id "10009999".
 
-// db.listingsAndReviews.updateOne(
-//   {
-//     _id: "10009999"
-//   },
-//   {
-//     $inc: { number_of_reviews: 1 }
-//   }
-// );
+db.listingsAndReviews.updateOne(
+  {
+    _id: "10009999"
+  },
+  {
+    $inc: { number_of_reviews: 1 }
+  }
+);
 
 
-// // 	Decrement the availability_365 field by 1 for all listings.
+// 	Decrement the availability_365 field by 1 for all listings.
 
-// db.listingsAndReviews.updateOne(
-//   {
-//     $dec: { availability_365: 1 }
-//   }
-// );
+db.listingsAndReviews.updateOne(
+  {},
+  {
+    $inc: { availability_365: -1 }
+  }
+);
 
 // // Using $or and $and:
 // // 	Find all listings where the property_type is either "Apartment" or "Condominium".
