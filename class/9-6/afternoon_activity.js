@@ -102,7 +102,7 @@ db.listingsAndReviews.findOneAndUpdate(
 
 
 
- 
+
 // Deleting Nested Data:
 // Remove the neighborhood_overview field from the listing with _id "10009999".
 
@@ -238,53 +238,60 @@ db.listingsAndReviews.updateOne(
   }
 );
 
-// // Using $or and $and:
-// // 	Find all listings where the property_type is either "Apartment" or "Condominium".
+// Using $or and $and:
+// 	Find all listings where the property_type is either "Apartment" or "Condominium".
 
-// db.listingsAndReviews.find({
-//   $or: [
-//     {
-//       property_type: "Apartment"
-//     },
-//     {
-//       property_type: "Condominium"
-//     },
-//   ]
-// })
+db.listingsAndReviews.find(
+  {
+    $or: [
+      {
+	property_type: "Condominium"
+      },
+      {
+	property_type: "Apartment"
+      },
+    ]
+  },
+)
+
+// 	Retrieve listings where the price is less than $200 and the bedrooms field is greater than or equal to 2.
+
+db.listingsAndReviews.find(
+  {
+    $and: [
+      {
+	price: { $lt: 200 }
+      },
+      {
+	bedrooms: { $gte: 2 }
+      },
+    ]
+  },
+)
+
+// Using $limit:
+// 	Retrieve the first 5 listings sorted by price in ascending order.
+
+db.listingsAndReviews.aggregate([
+  {
+    $sort: { price: 1 }  // Sort by price in ascending order
+  },
+  {
+    $limit: 5  // Limit to the first 5 documents
+  },
+  {
+    $project: { price: 1, _id: 0 }  // Only include the 'price' field, exclude '_id'
+  }
+])
 
 
-// // 	Retrieve listings where the price is less than $200 and the bedrooms field is greater than or equal to 2.
+// 	Find all listings where the accommodates field is greater than 2 and limit the result to 10 documents.
 
-// db.listingsAndReviews.find({
-//   $or: [
-//     {
-//       price: { $lt: 200 }
-//     },
-//     {
-//       bedrooms: { $gte: 2 }
-//     },
-//   ]
-// })
-
-// // Using $limit:
-// // 	Retrieve the first 5 listings sorted by price in ascending order.
-
-// db.listingsAndReviews.sort([
-//   {
-//     price: 1
-//   },
-//   {
-//     $limit: 10
-//   }
-// ])
-
-// // 	Find all listings where the accommodates field is greater than 2 and limit the result to 10 documents.
-
-// db.listingsAndReviews.aggregate([
-//   {
-//     accomodates: { $gt: 2 }
-//   },
-//   {
-//     $limit: 10
-//   }
-// ])
+db.listingsAndReviews.aggregate([
+  {
+    $match: { accommodates: { $gt: 2 } }  // Filter documents where 'accommodates' is greater than 2
+  },
+  {
+    $limit: 10  // Limit the results to the first 10 documents
+  }
+])
