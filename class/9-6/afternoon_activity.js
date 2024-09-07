@@ -119,16 +119,17 @@ db.listingsAndReviews.updateOne(
 )
 
 
-// // Finding by Date:
-// // Find all listings where the last_review date is after January 1st, 2019.
+// Finding by Date:
+// Find all listings where the last_review date is after January 1st, 2019.
 
-// db.listingsAndReviews.find(
-//   {
-//     last_review: {
-//       $gt: ISODate("2019-01-01")
-//     }
-//   }
-// )
+db.listingsAndReviews.find(
+  {
+    last_review: {
+      $gt: ISODate("2019-01-01")
+    }
+  }
+)
+
 
 // // Aggregation:
 // // 	Calculate the average price of all listings.
