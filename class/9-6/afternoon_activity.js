@@ -144,22 +144,22 @@ db.listingsAndReviews.aggregate([
 ])
 
 
-// // 	Find the host with the most listings.
+// 	Find the host with the most listings.
 
-// db.listingsAndReviews.aggregate([
-//   {
-//     $group: {
-//       _id: "$host.host_id",  // Group by _id field
-//       count: { $sum: 1 }  // Count each document
-//     }
-//   },
-//   {
-//     $sort: { count: -1 }  // Sort by count in descending order (highest count first)
-//   },
-//   {
-//     $limit: 1  // Limit the result to the top 1 document
-//   }
-// ])
+db.listingsAndReviews.aggregate([
+  {
+    $group: {
+      _id: "$host.host_id",  // Group by _id field
+      count: { $sum: 1 }  // Count each document
+    }
+  },
+  {
+    $sort: { count: -1 }  // Sort by count in descending order (highest count first)
+  },
+  {
+    $limit: 1  // Limit the result to the top 1 document
+  }
+])
 
 
 
