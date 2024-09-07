@@ -131,17 +131,17 @@ db.listingsAndReviews.find(
 )
 
 
-// // Aggregation:
-// // 	Calculate the average price of all listings.
+// Aggregation:
+// 	Calculate the average price of all listings.
 
-// db.listingsAndReviews.aggregate([
-//   {
-//     $group: {
-//       _id: null,  // Grouping all documents together
-//       average_price: { $avg: "$price" }  // Calculate the average of the review_score field
-//     }
-//   }
-// ])
+db.listingsAndReviews.aggregate([
+  {
+    $group: {
+      _id: null,
+      average_price: { $avg: "$price" }
+    }
+  }
+])
 
 
 // // 	Find the host with the most listings.
