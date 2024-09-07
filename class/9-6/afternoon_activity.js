@@ -212,11 +212,9 @@ db.listingsAndReviews
 
 // 	Count the number of listings where the beds field is greater than 1.
 
-db.listingsAndReviews
-  .find({
-    beds: { $gt: 1 }
-  })
-  .count()
+db.listingsAndReviews.countDocuments({
+  beds: { $gt: 1 }
+})
 
 // // Increment or Decrement:
 // // 	Increment the number_of_reviews field by 1 for the listing with _id "10009999".
