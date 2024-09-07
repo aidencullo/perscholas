@@ -186,13 +186,22 @@ db.listingsAndReviews.find(
 
 // 	Search for listings in Honolulu that mention "pool" in their amenities.
 
-// db.listingsAndReviews.find({
-//   $and: [
-//     { summary: "Honolulu" },
-//     { amenities: "pool" },
-//   ]
-// })
-
+db.listingsAndReviews.find(
+  {
+    $and: [
+      {
+	amenities: /pool/i
+      },
+      {
+	"host.host_location": /Honolulu/i
+      }
+    ]
+  },
+  {
+    amenities: 1,
+    "host.host_location": 1
+  }
+)
 
 
 // // Count:
