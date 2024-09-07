@@ -204,32 +204,19 @@ db.listingsAndReviews.find(
 )
 
 
-// // Count:
-// // 	Count the total number of listings in the database.
+// Count:
+// 	Count the total number of listings in the database.
 
-// db.listingsAndReviews.aggregate([
-//   {
-//     $group: {
-//       _id: null,
-//       count: { $sum: 1 }  // Count each document
-//     }
-//   },
-// ])
+db.listingsAndReviews
+  .countDocuments()
 
-// // 	Count the number of listings where the beds field is greater than 1.
+// 	Count the number of listings where the beds field is greater than 1.
 
-// db.listingsAndReviews.aggregate([
-//   {
-//     $group: {
-//       _id: null,
-//       count: { $sum: 1 }
-//     }
-//   },
-//   {
-//     $beds: { $gt: 1 }
-//   },
-// ])
-
+db.listingsAndReviews
+  .find({
+    beds: { $gt: 1 }
+  })
+  .count()
 
 // // Increment or Decrement:
 // // 	Increment the number_of_reviews field by 1 for the listing with _id "10009999".
