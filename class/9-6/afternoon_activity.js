@@ -163,15 +163,25 @@ db.listingsAndReviews.aggregate([
 
 
 
-// // Text Search:
-// // 	Search for listings that contain the word "ocean" in either the summary or description fields.
+// Text Search:
+// 	Search for listings that contain the word "ocean" in either the summary or description fields.
 
-// db.listingsAndReviews.find({
-//   $or: [
-//     { summary: "ocean" },
-//     { description: "ocean" },
-//   ]
-// })
+db.listingsAndReviews.find(
+  {
+    $or: [
+      {
+	summary: /ocean/i
+      },
+      {
+	description: /ocean/i
+      }
+    ]
+  },
+  {
+    description: 1
+  }
+)
+
 
 
 // 	Search for listings in Honolulu that mention "pool" in their amenities.
