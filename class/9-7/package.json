@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cassandra-driver": "^4.7.2",
     "mongodb": "^6.8.1",
     "nodemon": "^3.1.4"
   },
@@ -7,7 +8,8 @@
   "version": "1.0.0",
   "main": "databases.js",
   "scripts": {
-    "mongo": "nodemon mongo.js"
+    "mongo": "nodemon mongo.js",
+    "cassandra": "nodemon cassandra.js"
   },
   "keywords": [],
   "author": "",
