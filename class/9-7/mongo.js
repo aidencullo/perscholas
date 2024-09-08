@@ -1,29 +1,30 @@
 const { MongoClient } = require('mongodb');
+// or as an es module:
+// import { MongoClient } from 'mongodb'
 
-// Connection URI
-const uri = 'mongodb://localhost:27017';
+// Connection URL
+const url = 'mongodb://localhost:27017';
+const client = new MongoClient(url);
 
-// Create a new MongoClient
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// Database Name
+const dbName = 'myProject';
 
-async function connectToDatabase() {
-  try {
-    // Connect the client to the server
-    await client.connect();
-
-    // Establish and verify connection
-    console.log('Connected to MongoDB!');
-    
-    // Specify the database you want to access
-    const db = client.db('yourDatabaseName');
-
-    // Perform database operations
-  } catch (error) {
-    console.error('Connection failed:', error);
-  } finally {
-    // Close the connection when done
-    await client.close();
-  }
+async function main() {
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('documents');
+  await collection.insertMany([
+    { a: 1 }, { a: 2 }, { a: 3 }
+  ]);
+  const docs = await collection.find({}).toArray();
+  const result = await collection.updateMany({ a: 2 }, { $set: { b: 1 } });
+  console.log(result.modifiedCount);
+  return 'done.';
 }
 
-connectToDatabase();
+main()
+  .then(console.log)
+  .catch(console.error)
+  .finally(() => client.close());
