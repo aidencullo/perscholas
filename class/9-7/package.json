@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mongodb": "^6.8.1",
+    "nodemon": "^3.1.4"
+  },
+  "name": "9-7",
+  "version": "1.0.0",
+  "main": "databases.js",
+  "scripts": {
+    "mongo": "nodemon mongo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
