@@ -13,6 +13,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/query', async (req, res) => {
+  try {
+    const collection = db.collection('listingsAndReviews');
+    const result = await collection.find(req.query).limit(10).toArray();
+    res.send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 router.get('/:id', async (req, res) => {
   try {
     const collection = db.collection('listingsAndReviews');
