@@ -33,4 +33,16 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const collection = db.collection('listingsAndReviews');
+    const newListing = req.body;
+    newListing.createdAt = new Date();
+    const result = await collection.insertOne(newListing);
+    res.send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 export default router;
