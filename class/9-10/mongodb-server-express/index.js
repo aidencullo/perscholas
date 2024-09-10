@@ -55,6 +55,17 @@ app.patch('/comment/:id', async (req, res) => {
   }
 });
 
+app.delete('/:id', async (req, res) => {
+  try {
+    const query = { _id: new ObjectId(req.params.id) };
+    const collection = await db.collection('posts');
+    const result = await collection.deleteOne(query);
+    res.send(result).status(200);
+  } catch (error) {
+    res.send('Error').status(500);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
