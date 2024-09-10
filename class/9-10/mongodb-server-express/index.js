@@ -17,30 +17,42 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/:id', async (req, res) => {
-  let collection  = await db.collection('posts');
-  let query = { _id: new ObjectId(req.params.id) };
-  let results = await collection.findOne(query);
+  try {
+    let collection  = await db.collection('posts');
+    let query = { _id: new ObjectId(req.params.id) };
+    let results = await collection.findOne(query);
 
-  if (!results) res.send('Post not found').status(404);
-  else res.send(results).status(200);
+    if (!results) res.send('Post not found').status(404);
+    else res.send(results).status(200);
+  } catch (error) {
+    res.send('Error').status(500);
+  }
 });
 
 app.post('/', async (req, res) => {
-  let collection  = await db.collection('posts');
-  let newDoc = req.body;
-  newDoc.createdAt = new Date();
-  let result = await collection.insertOne(newDoc);
-  res.send(result).status(204);
+  try {
+    let collection  = await db.collection('posts');
+    let newDoc = req.body;
+    newDoc.createdAt = new Date();
+    let result = await collection.insertOne(newDoc);
+    res.send(result).status(204);
+  } catch (error) {
+    res.send('Error').status(500);
+  }
 });
 
 app.patch('/comment/:id', async (req, res) => {
-  const query = { _id: new ObjectId(req.params.id) };
-  const updates = { $push: { comments: req.body } };
-  
-  const collection = await db.collection('posts');
-  const result = await collection.updateOne(query, updates);
+  try {
+    const query = { _id: new ObjectId(req.params.id) };
+    const updates = { $push: { comments: req.body } };
+    
+    const collection = await db.collection('posts');
+    const result = await collection.updateOne(query, updates);
 
-  res.send(result).status(200);
+    res.send(result).status(200);
+  } catch (error) {
+    res.send('Error').status(500);
+  }
 });
 
 app.listen(port, () => {
