@@ -13,4 +13,14 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const collection = db.collection('listingsAndReviews');
+    const result = await collection.findOne({ _id: req.params.id });
+    res.send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 export default router;
