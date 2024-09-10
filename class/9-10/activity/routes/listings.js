@@ -45,4 +45,14 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const collection = db.collection('listingsAndReviews');
+    const result = await collection.deleteOne({ _id: req.params.id });
+    res.send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 export default router;
