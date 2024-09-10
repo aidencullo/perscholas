@@ -1,9 +1,12 @@
 import express from 'express';
 import { ObjectId } from 'mongodb';
+import bodyParser from 'body-parser';
 
 import db from './db.js';
 
 const app = express();
+
+app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
 
@@ -20,6 +23,14 @@ app.get('/:id', async (req, res) => {
 
   if (!results) res.send('Post not found').status(404);
   else res.send(results).status(200);
+});
+
+app.post('/', async (req, res) => {
+  let collection  = await db.collection('posts');
+  let newDoc = req.body;
+  newDoc.createdAt = new Date();
+  let result = await collection.insertOne(newDoc);
+  res.send(result).status(204);
 });
 
 app.listen(port, () => {
