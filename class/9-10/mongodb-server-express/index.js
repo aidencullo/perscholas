@@ -6,8 +6,10 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get('/', async (req, res) => {
+  let collection  = await db.collection('posts');
+  let results = await collection.find({}).limit(1).toArray();
+  res.send(results).status(200);
 });
 
 app.listen(port, () => {
