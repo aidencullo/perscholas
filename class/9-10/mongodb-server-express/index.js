@@ -33,6 +33,16 @@ app.post('/', async (req, res) => {
   res.send(result).status(204);
 });
 
+app.patch('/comment/:id', async (req, res) => {
+  const query = { _id: new ObjectId(req.params.id) };
+  const updates = { $push: { comments: req.body } };
+  
+  const collection = await db.collection('posts');
+  const result = await collection.updateOne(query, updates);
+
+  res.send(result).status(200);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
