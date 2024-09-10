@@ -15,3 +15,7 @@ try {
 } catch (e) {
   console.error(e);
 }
+
+const db = conn.db('test');
+
+export default db;
