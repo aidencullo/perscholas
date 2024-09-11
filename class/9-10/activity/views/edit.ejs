@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Listing</title>
+    <name>Edit Listing</name>
 </head>
 <body>
     <h1>Edit Listing</h1>
-    <form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
+    <form action="/listings/<%= listing._id %>/put" method="POST">
         <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value="<%= listing.title %>" required>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= listing.name %>" required>
         </div>
         <div>
             <label for="description">Description:</label>

@@ -105,4 +105,20 @@ router.get('/:id/edit', async (req, res) => {
   }
 });
 
+router.post('/:id/put', async (req, res) => {
+  console.log(req.body);
+  try {
+    const collection = db.collection('listingsAndReviews');
+    const exists = await collection.findOne({ _id: req.params.id });
+    if (!exists) {
+      res.status(404).send('Not found');
+    } else {
+      const listings = await collection.replaceOne({ _id: req.params.id }, req.body);
+      res.send(listings);
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 export default router;
