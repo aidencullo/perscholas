@@ -12,7 +12,9 @@
     <% if (listings.length > 0) { %>
       <% listings.forEach(function(listing) { %>
         <li>
-          <strong><%= listing._id %></strong>
+	  <a href="/listings/<%= listing._id %>">
+            <strong><%= listing.name %></strong>
+	  </a>
         </li>
       <% }); %>
     <% } else { %>
