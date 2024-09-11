@@ -6,8 +6,8 @@ const router = Router();
 router.get('/', async (req, res) => {
   try {
     const collection = db.collection('listingsAndReviews');
-    const result = await collection.find({}).limit(10).toArray();
-    res.render('index', { listings: result });
+    const listings = await collection.find({}).limit(10).toArray();
+    res.render('index', { listings: listings });
   } catch (error) {
     console.log(error);
     res.status(500).send('Something went wrong');
@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
 router.get('/query', async (req, res) => {
   try {
     const collection = db.collection('listingsAndReviews');
-    const result = await collection.find(req.query).limit(10).toArray();
-    res.send(result);
+    const listings = await collection.find(req.query).limit(10).toArray();
+    res.send(listings);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -27,8 +27,8 @@ router.get('/query', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const collection = db.collection('listingsAndReviews');
-    const result = await collection.findOne({ _id: req.params.id });
-    res.send(result);
+    const listing = await collection.findOne({ _id: req.params.id });
+    res.render('show', { listing: listing });
   } catch (error) {
     res.status(500).send(error);
   }
@@ -39,8 +39,8 @@ router.post('/', async (req, res) => {
     const collection = db.collection('listingsAndReviews');
     const newListing = req.body;
     newListing.createdAt = new Date();
-    const result = await collection.insertOne(newListing);
-    res.send(result);
+    const listings = await collection.insertOne(newListing);
+    res.send(listings);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -54,8 +54,8 @@ router.delete('/:id', async (req, res) => {
     if (!exists) {
       return res.status(404).send('Not found');
     }
-    const result = await collection.deleteOne(filter);
-    res.send(result);
+    const listings = await collection.deleteOne(filter);
+    res.send(listings);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -68,8 +68,8 @@ router.put('/:id', async (req, res) => {
     if (!exists) {
       res.status(404).send('Not found');
     } else {
-      const result = await collection.replaceOne({ _id: req.params.id }, req.body);
-      res.send(result);
+      const listings = await collection.replaceOne({ _id: req.params.id }, req.body);
+      res.send(listings);
     }
   } catch (error) {
     res.status(500).send(error.message);

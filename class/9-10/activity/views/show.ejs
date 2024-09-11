@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= listing.name %></title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1 { color: #333; }
+        .section { margin-bottom: 20px; }
+        .amenity { display: inline-block; background: #f0f0f0; padding: 5px 10px; margin: 5px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1><%= listing.name %></h1>
+    
+    <div class="section">
+        <h2>Property Details</h2>
+        <p><strong>Type:</strong> <%= listing.property_type %> - <%= listing.room_type %></p>
+        <p><strong>Bed:</strong> <%= listing.bed_type %></p>
+        <p><strong>Accommodates:</strong> <%= listing.accommodates %> guests</p>
+        <p><strong>Bedrooms:</strong> <%= listing.bedrooms %></p>
+        <p><strong>Beds:</strong> <%= listing.beds %></p>
+        <p><strong>Bathrooms:</strong> <%= listing.bathrooms.$numberDecimal %></p>
+    </div>
+
+    <div class="section">
+        <h2>Description</h2>
+        <p><%= listing.description %></p>
+    </div>
+
+    <% if (listing.space) { %>
+    <div class="section">
+        <h2>Space</h2>
+        <p><%= listing.space %></p>
+    </div>
+    <% } %>
+
+    <div class="section">
+        <h2>Neighborhood Overview</h2>
+        <p><%= listing.neighborhood_overview %></p>
+    </div>
+
+    <div class="section">
+        <h2>Transit</h2>
+        <p><%= listing.transit %></p>
+    </div>
+
+    <% if (listing.notes) { %>
+    <div class="section">
+        <h2>Notes</h2>
+        <p><%= listing.notes %></p>
+    </div>
+    <% } %>
+
+    <div class="section">
+        <h2>House Rules</h2>
+        <p><%= listing.house_rules %></p>
+    </div>
+
+    <div class="section">
+        <h2>Booking Information</h2>
+        <p><strong>Minimum nights:</strong> <%= listing.minimum_nights %></p>
+        <p><strong>Maximum nights:</strong> <%= listing.maximum_nights %></p>
+        <p><strong>Cancellation policy:</strong> <%= listing.cancellation_policy.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></p>
+    </div>
+
+    <div class="section">
+        <h2>Amenities</h2>
+        <% listing.amenities.forEach(function(amenity) { %>
+            <span class="amenity"><%= amenity %></span>
+        <% }); %>
+    </div>
+
+    <div class="section">
+        <h2>Reviews</h2>
+        <p><strong>Number of reviews:</strong> <%= listing.number_of_reviews %></p>
+        <p><strong>First review:</strong> <%= new Date(listing.first_review).toLocaleDateString() %></p>
+        <p><strong>Last review:</strong> <%= new Date(listing.last_review).toLocaleDateString() %></p>
+    </div>
+
+    <div class="section">
+        <p><strong>Listing URL:</strong> <a href="<%= listing.listing_url %>" target="_blank">View on Airbnb</a></p>
+    </div>
+</body>
+</html>
+
