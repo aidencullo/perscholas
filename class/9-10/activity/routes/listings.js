@@ -76,4 +76,19 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.post('/:id/delete', async (req, res) => {
+  try {
+    const collection = db.collection('listingsAndReviews');
+    const exists = await collection.findOne({ _id: req.params.id });
+    if (!exists) {
+      res.status(404).send('Not found');
+    } else {
+      const listings = await collection.deleteOne({ _id: req.params.id });
+      res.send(listings);
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 export default router;
