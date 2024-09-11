@@ -48,7 +48,12 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const collection = db.collection('listingsAndReviews');
-    const result = await collection.deleteOne({ _id: req.params.id });
+    const filter = { _id: req.params.id };
+    const exists = await collection.findOne(filter);
+    if (!exists) {
+      return res.status(404).send('Not found');
+    }
+    const result = await collection.deleteOne(filter);
     res.send(result);
   } catch (error) {
     res.status(500).send(error);
