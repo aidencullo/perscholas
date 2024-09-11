@@ -7,9 +7,10 @@ router.get('/', async (req, res) => {
   try {
     const collection = db.collection('listingsAndReviews');
     const result = await collection.find({}).limit(10).toArray();
-    res.send(result);
+    res.render('index', { listings: result });
   } catch (error) {
-    res.status(500).send(error);
+    console.log(error);
+    res.status(500).send('Something went wrong');
   }
 });
 
