@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.use('/listings', listingsRouter);
 
 app.use((req, res) => {
-  res.status(404).send('Not Found');
+  res.status(404).send('Route not found');
 });
 
 app.listen(PORT, () => {

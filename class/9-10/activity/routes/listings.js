@@ -91,4 +91,18 @@ router.post('/:id/delete', async (req, res) => {
   }
 });
 
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const collection = db.collection('listingsAndReviews');
+    const exists = await collection.findOne({ _id: req.params.id });
+    if (!exists) {
+      res.status(404).send('Not found');
+    } else {
+      res.render('edit', { listing: exists });
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 export default router;
