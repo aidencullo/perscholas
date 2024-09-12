@@ -64,3 +64,9 @@
 [submodule "class/9-11/MongoDB-Schema-Validation"]
 	path = class/9-11/MongoDB-Schema-Validation
 	url = https://github.com/aidencullo/MongoDB-Schema-Validation.git
+[submodule "labs/ALAB-319.4.1"]
+	path = labs/ALAB-319.4.1
+	url = https://github.com/aidencullo/ALAB-319.4.1.git
+[submodule "class/9-12/Mongoose"]
+	path = class/9-12/Mongoose
+	url = https://github.com/aidencullo/Mongoose.git
