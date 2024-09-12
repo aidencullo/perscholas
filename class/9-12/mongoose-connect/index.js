@@ -5,9 +5,21 @@ import Grade from './models/grade.js';
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/', async (req, res) => {
   const results = await Grade.find({ class_id: 311 }).limit(5);
   res.send(results);
+});
+
+app.post('/', async (req, res) => {
+  try {
+    const results = await Grade.create(req.body);
+    if (!results) return res.status(400).send('Error');
+    else res.send(results);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 app.listen(3000, () => {
