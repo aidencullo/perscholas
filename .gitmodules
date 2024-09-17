@@ -70,3 +70,15 @@
 [submodule "class/9-12/Mongoose"]
 	path = class/9-12/Mongoose
 	url = https://github.com/aidencullo/Mongoose.git
+[submodule "class/9-17/Simple-Component-Demo"]
+	path = class/9-17/Simple-Component-Demo
+	url = https://github.com/aidencullo/Simple-Component-Demo.git
+[submodule "class/9-17/Simple-React-Challenge-1"]
+	path = class/9-17/Simple-React-Challenge-1
+	url = https://github.com/aidencullo/Simple-React-Challenge-1.git
+[submodule "class/9-17/Simple-React-Challenge-2"]
+	path = class/9-17/Simple-React-Challenge-2
+	url = https://github.com/aidencullo/Simple-React-Challenge-2.git
+[submodule "class/9-17/Simple-React-Challenge-3"]
+	path = class/9-17/Simple-React-Challenge-3
+	url = https://github.com/aidencullo/Simple-React-Challenge-3.git
