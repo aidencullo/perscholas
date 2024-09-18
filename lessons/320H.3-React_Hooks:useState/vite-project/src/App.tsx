@@ -1,15 +1,20 @@
-import { useState } from 'react'
+import { useState } from "react"
 
-function App() {
-    const [count, setCount] = useState(0)
+export default function Counter(props) {
+  // initiate counter at 0, setCounter let's us update the counter
+  const [counter, setCounter] = useState(0)
 
-    return (
-	<div>
-	    <h1>Count: {count}</h1>
-	    <button onClick={() => setCount(count + 1)}>Increment</button>
-	    <button onClick={() => setCount(count - 1)}>Decrement</button>
-	</div>
-    )
+  // Function to add one to the state
+  const addOne = () => {
+    // sets counter to its current value + 1
+    setCounter(counter + 1)
+  }
+
+  // The h1 displays the counter, and the button runs the addOne() function
+  return (
+      <div>
+	  <h1>{counter}</h1>
+	  <button onClick={addOne}>Click Me to Add One</button>
+      </div>
+  )
 }
-
-export default App
