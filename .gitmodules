@@ -85,3 +85,15 @@
 [submodule "labs/ALAB-320H.1.1"]
 	path = labs/ALAB-320H.1.1
 	url = https://github.com/aidencullo/ALAB-320H.1.1.git
+[submodule "lessons/320H.2/Dynamic-Props-Demo"]
+	path = lessons/320H.2/Dynamic-Props-Demo
+	url = https://github.com/aidencullo/Dynamic-Props-Demo.git
+[submodule "lessons/320H.2/React-Props-Practice-1"]
+	path = lessons/320H.2/React-Props-Practice-1
+	url = https://github.com/aidencullo/React-Props-Practice-1.git
+[submodule "lessons/320H.2/React-Props-Practice-2"]
+	path = lessons/320H.2/React-Props-Practice-2
+	url = https://github.com/aidencullo/React-Props-Practice-2.git
+[submodule "lessons/320H.2/React-Props-Practice-3"]
+	path = lessons/320H.2/React-Props-Practice-3
+	url = https://github.com/aidencullo/React-Props-Practice-3.git
