@@ -1,44 +1,14 @@
-const Parent = props =>
-      <>
-	<Child
-	  person = "john"
-	  size = "large"
-	  isSepia = {true}
-	  thickBorder = {false}
-	/>
-	<Child2
-	  person = "john"
-	  size = "large"
-	  isSepia = {true}
-	  thickBorder = {false}
-        />
-      </>
-
-function Child({ person, size, isSepia, thickBorder }) {
-  return (
-    <div className="card">
-      <Avatar
-        person={person}
-        size={size}
-        isSepia={isSepia}
-        thickBorder={thickBorder}
-      />
-    </div>
-  );
+const Container = (props) => {
+  const style = {
+    width: "90%",
+    margin: "auto",
+    border: "1px solid green"
+  }
+  return <div style={style}> {props.children} </div>
 }
 
-function Child2(props) {
-  return (
-    <div className="card">
-      <Avatar {...props} />
-    </div>
-  );
+const App = (props) => {
+  return <Container><h1>Hello World</h1></Container>
 }
 
-const Avatar = ({ person, size, isSepia, thickBorder }) => {
-  return (
-    <p> {person} {size} {isSepia} {thickBorder} </p>
-  );
-}
-
-export default Parent
+export default App;
