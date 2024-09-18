@@ -1,8 +1,22 @@
-function Welcome(props) {
-  return <h1 style={props.style}>Hello, {props.name}</h1>;
+// The Child Component
+const Child = props => {
+  // change the value of someVariable using function sent via props
+  props.setter(8)
+
+  return <h1>{props.stuff}</h1>
 }
 
-export default function App() {
-  const element = <Welcome name="Sara" style={{ color: "red" }} />;
-  return element;
+// The Parent Component
+const Parent = props => {
+  let someVariable
+
+  // function to set someVariable
+  const setSV = data => {
+    someVariable = data
+  }
+
+  // send down two props, stuff and setter
+  return <Child stuff="hello world" setter={setSV} />
 }
+
+export default Parent
