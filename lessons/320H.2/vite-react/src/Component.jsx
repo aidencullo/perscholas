@@ -1,7 +1,10 @@
-const Parent = props => <Child cheese="gouda" />
+const Parent = props => <Child name="John" age={30} />
 
-const Child = props => <GrandChild data={props.cheese} />
-
-const GrandChild = props => <h1>{props.data}</h1>
+const Child = ({ name, age = 0 }) => (
+  <div>
+    <h1>{name}</h1>
+    <h2>{age}</h2>
+  </div>
+)
 
 export default Parent
