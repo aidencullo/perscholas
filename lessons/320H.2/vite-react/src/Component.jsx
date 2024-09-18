@@ -1,14 +1,19 @@
-const Container = (props) => {
-  const style = {
-    width: "90%",
-    margin: "auto",
-    border: "1px solid green"
-  }
-  return <div style={style}> {props.children} </div>
+const UserMenu = () => <p> User Menu </p>;
+const LoginBtn = () => <p> Login </p>;
+const LogoutBtn = () => <p> Logout </p>;
+const SearchBar = () => <p> Search Bar </p>;
+const Menu = () => <p> Menu </p>;
+const NavContainer = props => <p> {props.children} </p>;
+
+function Navbar({ isLoggedIn = false }) {
+  return (
+    <NavContainer>
+      <Menu />
+      <SearchBar />
+      { isLoggedIn && <UserMenu /> }
+      { isLoggedIn ? <LogoutBtn /> : <LoginBtn /> }
+    </NavContainer>
+  );
 }
 
-const App = (props) => {
-  return <Container><h1>Hello World</h1></Container>
-}
-
-export default App;
+export default Navbar;
