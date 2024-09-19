@@ -1,17 +1,24 @@
 import { useState } from 'react'
 
 export default function App() {
-    const [state, setState] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
+    const initialState = {
+	isLoggedIn: true,
+	status: "hidden",
+	content: null,
+	active: true
+    }
+    const [state, setState] = useState(initialState)
 
     const handleClick = () => {
-	const newState = [...state]
-	newState[0]++
-	setState(newState)
+	setState({
+	    ...state,
+	    isLoggedIn: !state.isLoggedIn,
+	})
     }
     
     return (
 	<div>
-	    <h1>{state}</h1>
+	    <h1>{JSON.stringify(state)}</h1>
 	    <button onClick={() => handleClick()}>Click me</button>
 	</div>
     )
