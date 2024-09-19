@@ -1,11 +1,15 @@
 function App() {
-  return (
-    <>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+	<>
+	    <article>
+		<p> I write, erase, rewrite </p>
+	<hr />
+	<p> Erase again, and then </p>
+	<hr />
+	<p> A poppy blooms. </p>
+	</article>
+	</>
+    )
 }
 
 export default App
