@@ -1,7 +1,3 @@
-import React from 'react';
-
-import Line from './Line.tsx';
-
 const lines = [
     "I write, erase, rewrite",
     "Erase again, and then",
@@ -10,10 +6,12 @@ const lines = [
 
 function App() {
     const poem = lines.map((line, index) => {
-	if (index === lines.length - 1) {
-	    return <Line key={index} line={line} last={true} />;
-	}
-	return <Line key={index} line={line} />;
+	return (
+	    <div>
+	    <p> {line} </p>
+	    { index < lines.length - 1 && <hr /> }
+	    </div>
+	);
     });
 
     return (
