@@ -1,15 +1,32 @@
+import React from 'react';
+
+const lines = [
+    "I write, erase, rewrite",
+    "Erase again, and then",
+    "A poppy blooms.",
+];
+
 function App() {
+    const poem = lines.map((line, index) => {
+        if (index === lines.length - 1) {
+            return <p key={index}>{line}</p>;
+        } else {
+            return (
+                <React.Fragment key={index}>
+                    <p>{line}</p>
+                    <hr />
+                </React.Fragment>
+            );
+        }
+    });
+
     return (
-	<>
-	    <article>
-		<p> I write, erase, rewrite </p>
-	<hr />
-	<p> Erase again, and then </p>
-	<hr />
-	<p> A poppy blooms. </p>
-	</article>
-	</>
-    )
+        <>
+            <article>
+                {poem}
+            </article>
+        </>
+    );
 }
 
-export default App
+export default App;
