@@ -4,8 +4,9 @@ export default function App() {
     const [state, setState] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     const handleClick = () => {
-	state[0] = 1
-	setState(state)
+	const newState = [...state]
+	newState[0]++
+	setState(newState)
     }
     
     return (
