@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import Receipt from './Receipt.tsx'
+
 function App() {
     const [count, setCount] = useState(0)
 
@@ -49,7 +51,9 @@ function App() {
 
     return (
 	<>
-	{ receipts.map(receipt => <h2>{receipt.person}</h2>) }
+	{receipts.map((receipt, index) => (
+	    <Receipt key={index} receipt={receipt} />
+	))}
 	</>
     )
 }
