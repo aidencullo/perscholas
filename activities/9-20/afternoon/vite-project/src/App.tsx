@@ -18,8 +18,7 @@ interface ReceiptType {
 }
 
 function App() {
-
-    const receipts: ReceiptType[] = [
+    const [receipts, setReceipts] = useState<ReceiptType[]>([
         {
             person: 'Karolin',
             order: {
@@ -59,7 +58,7 @@ function App() {
             },
             paid: true,
         },
-    ];
+    ]);
 
     return (
         <>
