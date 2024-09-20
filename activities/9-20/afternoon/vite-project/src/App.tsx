@@ -60,10 +60,18 @@ function App() {
         },
     ]);
 
+    const updateReceipts = (receipt: ReceiptType) => {
+	const newReceipts = [...receipts];
+	const index = newReceipts.findIndex((r) => r.person === receipt.person);
+	newReceipts[index] = receipt;
+	setReceipts(newReceipts);
+    };
+
     return (
         <>
+	<h1> {new Date().toISOString()} </h1>
             {receipts.map((receipt, index) => (
-                <Receipt key={index} receipt={receipt} />
+                <Receipt key={index} receipt={receipt} updateReceipts={updateReceipts} />
             ))}
         </>
     );
