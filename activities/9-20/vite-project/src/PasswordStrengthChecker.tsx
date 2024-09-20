@@ -3,6 +3,20 @@ import { useState } from "react";
 export default function App() {
     const [status, setStatus] = useState<string>("");
     const [statusColor, setStatusColor] = useState<string>("black");
+    const getStatusColor = (): string => {
+	console.log(status);
+	switch (status) {
+	    case "weak":
+		return "red";
+	    case "medium":
+		return "orange";
+	    case "strong":
+		return "green";
+	    default:
+		return "black";
+	}
+    };
+    const color = getStatusColor();
 
     const isMedium = (password: string): boolean => {
         return password.length >= 6 && containsNumber(password) && containsLetter(password);
@@ -27,13 +41,13 @@ export default function App() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const password = e.target.value;
         if (isStrong(password)) {
-            setStatus("Password is strong");
+            setStatus("strong");
 	    setStatusColor("green");
         } else if (isMedium(password)) {
-            setStatus("Password is medium");
+            setStatus("medium");
 	    setStatusColor("orange");
         } else {
-            setStatus("Password is weak");
+            setStatus("weak");
 	    setStatusColor("red");
         }
     };
@@ -42,7 +56,7 @@ export default function App() {
         <div>
             <h1>Enter your password</h1>
             <input onChange={handleChange} type="password" />
-            <p style={{ color: statusColor }}>{status}</p>
+            <p style={{ color: color }}>{status}</p>
         </div>
     );
 }
