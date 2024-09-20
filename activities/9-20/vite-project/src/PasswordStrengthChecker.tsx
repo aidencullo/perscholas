@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 export default function App() {
-    const [status, setStatus] = useState<string>("");
-    const [statusColor, setStatusColor] = useState<string>("black");
-    const getStatusColor = (): string => {
+    const computeColor = (): string => {
 	console.log(status);
 	switch (status) {
 	    case "weak":
@@ -16,7 +14,6 @@ export default function App() {
 		return "black";
 	}
     };
-    const color = getStatusColor();
 
     const isMedium = (password: string): boolean => {
         return password.length >= 6 && containsNumber(password) && containsLetter(password);
@@ -42,21 +39,22 @@ export default function App() {
         const password = e.target.value;
         if (isStrong(password)) {
             setStatus("strong");
-	    setStatusColor("green");
         } else if (isMedium(password)) {
             setStatus("medium");
-	    setStatusColor("orange");
         } else {
             setStatus("weak");
-	    setStatusColor("red");
         }
     };
+
+    const [status, setStatus] = useState<string>("");
+    const color = computeColor();
+    const message = 'Your password is ' + status;
 
     return (
         <div>
             <h1>Enter your password</h1>
-            <input onChange={handleChange} type="password" />
-            <p style={{ color: color }}>{status}</p>
+            <input onChange={handleChange} />
+            <p style={{ color: color }}>{message}</p>
         </div>
     );
 }
