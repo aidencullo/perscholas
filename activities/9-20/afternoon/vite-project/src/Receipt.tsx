@@ -1,13 +1,23 @@
 import Order from './Order';
 
-interface Receipt {
+interface Order {
+    main: string;
+    protein: string;
+    rice: string | null;
+    sauce: string;
+    toppings: string[];
+    drink: string;
+    cost: number;
+}
+
+interface ReceiptType {
     person: string;
-    order: string[];
+    order: Order;
     paid: boolean;
 }
 
 interface AppProps {
-    receipt: Receipt;
+    receipt: ReceiptType;
 }
 
 export default function App({ receipt }: AppProps) {
