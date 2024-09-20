@@ -4,11 +4,25 @@ export default function App() {
     const [password, setPassword] = useState("");
     const [status, setStatus] = useState("")
 
+    const isWeak = (password) => {
+	return password.length < 6;
+    }
+
+    const isMedium = (password) => {
+	return password.length >= 6 && password.length < 10;
+    }
+
+    const isStrong = (password) => {
+	return password.length >= 10;
+    }
+
     const HandleChange = (e) => {
-	if (e.target.value.length < 6) {
-	    setStatus("Password must be at least 6 characters")
-	} else {
+	if (isStrong(e.target.value)) {
 	    setStatus("Password is strong")
+	} else if (isMedium(e.target.value)) {
+	    setStatus("Password is medium")
+	} else {
+	    setStatus("Password is weak")
 	}
     }
     
