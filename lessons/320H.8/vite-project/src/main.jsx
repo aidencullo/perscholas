@@ -1,10 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
 
-createRoot(document.getElementById('root')).render(
+// Import BrowserRouter
+import { BrowserRouter } from "react-router-dom";
+
+// Wrap the App component with the BrowserRouter component to enable the router features.
+ReactDOM.render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
-)
+  document.getElementById("root")
+);
