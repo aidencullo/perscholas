@@ -3,8 +3,7 @@ import {useParams} from "react-router-dom"
 
 export default function Component (props) {
   // Our api key from some third-party API.
-  const apiKey = "YOUR API KEY";
-  const url = `http://some.api.com/api/getData?apikey=${apiKey}`;
+  const url = `https://jsonplaceholder.typicode.com/todos/1`;
 
   // State to hold the data.
   const [data, setData] = useState("null");
@@ -13,6 +12,7 @@ export default function Component (props) {
   const getData = async () => {
     try {
       const response = await fetch(url);
+      console.log(response)
       const data = await response.json();
       setData(data);
     } catch(e) {
@@ -28,10 +28,7 @@ export default function Component (props) {
   // loaded function for when data is fetched.
   const loaded = () => {
     return (
-      <div>
-        <h1>{data.somefield}</h1>
-        <h2>{data.someOtherField}</h2>
-      </div>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     );
   };
 
