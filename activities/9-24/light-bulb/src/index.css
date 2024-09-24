@@ -1,0 +1,29 @@
+/* App.css */
+.switch {
+  width: 60px;
+  height: 30px;
+  background-color: grey;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch-button {
+  width: 28px;
+  height: 28px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: all 0.3s;
+}
+
+.switch-button.on {
+  background-color: green;
+  left: 31px;
+}
+
+.switch-button.off {
+  background-color: red;
+}

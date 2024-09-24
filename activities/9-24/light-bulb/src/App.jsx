@@ -6,24 +6,22 @@ import bulbOff from './assets/bulb-off.png';
 import './App.css';
 
 function App() {
-
   const buttonRef = useRef(null);
   const [isOn, setIsOn] = useState(true);
 
   const handleClick = () => {
-    setIsOn(i => !i)
-    buttonRef.current.src = isOn ? bulbOff : bulbOn
-  }
-  
+    setIsOn((prev) => !prev);
+  };
+
   return (
     <div>
       <h1>This room is {isOn ? 'lit' : 'dark'}</h1>
-      <img src={bulbOn} alt="light bulb" ref={buttonRef} />
+      <img src={isOn ? bulbOn : bulbOff} alt="light bulb" ref={buttonRef} />
       <div className='switch' onClick={handleClick}>
-        <div className='switch-button'></div>
+        <div className={`switch-button ${isOn ? 'on' : 'off'}`} />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
