@@ -6,7 +6,7 @@ export default function Nav (props) {
       <Link to="/">
         <div>Main</div>
       </Link>
-      <Link to="/profile">
+      <Link to="/profile/:id">
         <div>Profile</div>
       </Link>
     </div>

@@ -12,7 +12,7 @@ export default function App () {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />}/>
-        <Route path="/profile" element={<Profile />}/>
+        <Route path="/profile/:id" element={<Profile />}/>
       </Routes>
     </div>
   );
