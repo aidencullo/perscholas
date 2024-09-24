@@ -1,7 +1,7 @@
-export default function App () {
+export default function Profile () {
   return (
     <div>
-      <h1>App</h1>
+      <h1>Profile</h1>
     </div>
   );
 }
