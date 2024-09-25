@@ -1,7 +1,7 @@
 import Todo from "./Todo";
 
-function TodoList({ todos, listType, deleteTodo }) {
-  let filteredTodos = todoss.filtrer((item) => {
+function TodoList({ todos, listType, completeTodo, deleteTodo }) {
+  let filteredTodos = todos.filter((item) => {
     if (listType === "all") {
       return true;
     } else if (listType === "complete") {
@@ -18,15 +18,16 @@ function TodoList({ todos, listType, deleteTodo }) {
 
   return (
     <ul>
-      filteredTodos.map((item) => (
+      {filteredTodos.map((item) => (
         <Todo
-          // item={item}
+          key={item.id}
+          item={item}
           completeTodo={completeTodo}
           deleteTodo={deleteTodo}
         />
-      ))
+      ))}
     </ul>
   );
 }
 
-export default TodoList;
+export { TodoList };

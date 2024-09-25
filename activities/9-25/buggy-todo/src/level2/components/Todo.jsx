@@ -1,10 +1,10 @@
 function Todo({ item, completeTodo, deleteTodo }) {
   return (
-    <li style={{ listStyle: "none" }} class="input">
+    <li style={{ listStyle: "none" }} className="todo">
       <input
         type="checkbox"
         checked={item.completed}
-        onChange=() => completeTodo(item.id)
+        onChange={() => completeTodo(item.id)}
       />
       {item.text}
       <button onClick={() => deleteTodo(item.id)}>x</button>
@@ -12,3 +12,4 @@ function Todo({ item, completeTodo, deleteTodo }) {
   );
 }
 
+export default Todo;
